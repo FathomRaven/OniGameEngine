@@ -1,0 +1,6 @@
+#Compilation info
+.vscode
+#.dlls and assets
+#bin
+#library stuff thats unimportant
+lib
