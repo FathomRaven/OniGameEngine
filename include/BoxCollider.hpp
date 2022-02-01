@@ -7,6 +7,8 @@ public:
     BoxCollider(Vector2 size);
     ~BoxCollider();
 
+    Vector2 GetFurthestPoint() override;
+
 private:
     static const int MAX_VERTS = 4;
 
