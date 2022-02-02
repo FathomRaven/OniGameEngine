@@ -10,7 +10,14 @@ public:
 
     virtual void Render();
 
+    bool CheckCollision(PhysEntity* other);
+
+    virtual void Hit(PhysEntity* other);
+
+    unsigned long GetID();
 protected:
+
+    unsigned long mID;
 
     std::vector<Collider*> mColliders;
 
@@ -18,4 +25,5 @@ protected:
 
     void AddCollider(Collider* collider, Vector2 localPos = VEC2_ZERO);
 
+    virtual bool IgnoreCollisions();
 };

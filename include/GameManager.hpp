@@ -7,7 +7,9 @@ GameManager singleton class. Handles most the main game loop
 #include "InputManager.hpp"
 #include "AnimatedTexture.hpp"
 #include "Player.hpp"
+#include "Tile.hpp"
 #include "CameraManager.hpp"
+#include "PhysicsManager.hpp"
 
 class GameManager{
 public:    
@@ -31,12 +33,14 @@ private:
     InputManager* mInputMgr;
     AudioManager* mAudioMgr;
     CameraManager* cameraMgr;
+    PhysicsManager* physMgr;
     //Timer
     Timer* mTimer;
     //Different events
     SDL_Event mEvents;
 
     Player* playerOne;
+    Tile* tile1;
 
     //Construct and destruct
 

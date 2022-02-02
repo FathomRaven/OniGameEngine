@@ -40,6 +40,9 @@ GameManager::GameManager()
 
     cameraMgr = CameraManager::Instance();
 
+    physMgr = PhysicsManager::Instance();
+    physMgr->SetLayerCollisionMask(PhysicsManager::CollisionLayers::Friendly, PhysicsManager::CollisionFlags::Tile);
+
     //Create timer instance
     mTimer = Timer::Instance();
 
@@ -48,6 +51,8 @@ GameManager::GameManager()
     cameraMgr->SetActiveCamera(0);
 
     playerOne = new Player();
+    tile1 = new Tile();
+    tile1->Pos(Vector2(300.0f, 500.0f));
 }
 
 GameManager::~GameManager()
@@ -56,6 +61,9 @@ GameManager::~GameManager()
     AssetManager::Release();
     mAssetMgr = nullptr;
     
+    PhysicsManager::Release();
+    physMgr = nullptr;
+
     Graphics::Release();
     mGraphics = nullptr;
 
@@ -64,6 +72,9 @@ GameManager::~GameManager()
 
     AudioManager::Release();
     mAudioMgr = nullptr;
+
+    CameraManager::Release();
+    cameraMgr = nullptr;
 
     Timer::Release();
     mTimer = nullptr;
@@ -86,6 +97,7 @@ void GameManager::Update()
         playerOne->Translate(Vector2(-5.0f, 0.0f));
     if(mInputMgr->KeyDown(SDL_SCANCODE_RIGHT))
         playerOne->Translate(Vector2(5.0f, 0.0f));
+
 }
 
 void GameManager::Render()
@@ -93,12 +105,14 @@ void GameManager::Render()
     mGraphics->ClearBackBuffer();
 
     playerOne->Render();
+    tile1->Render();
 
     mGraphics->Render();
 }
 
 void GameManager::LateUpdate()
 {
+    physMgr->Update();
     mInputMgr->UpdatePrevInput();
 }
 
