@@ -43,7 +43,8 @@ bool PhysEntity::CheckCollision(PhysEntity* other)
     bool narrowPhaseCheck = false;
     if(mBroadPhaseCollider && other->mBroadPhaseCollider)
     {
-        narrowPhaseCheck = ColliderColliderCheck(mBroadPhaseCollider, other->mBroadPhaseCollider);
+        // narrowPhaseCheck = ColliderColliderCheck(mBroadPhaseCollider, other->mBroadPhaseCollider);
+        return ColliderColliderCheck(mBroadPhaseCollider, other->mBroadPhaseCollider);
     }
     else
     {
@@ -57,7 +58,10 @@ bool PhysEntity::CheckCollision(PhysEntity* other)
             for (int j = 0; j < (int)other->mColliders.size(); j++)
             {
                 if(ColliderColliderCheck(mColliders[i], other->mColliders[j]))
+                {
                     return true;
+                }
+                    
             }
             
         }
