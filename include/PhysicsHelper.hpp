@@ -42,21 +42,32 @@ inline bool CircleCircleCollision(CircleCollider* c1, CircleCollider* c2)
 
 inline bool BoxCircleCollision(BoxCollider* box, CircleCollider* circle)
 {
-    if(PointToLineDistance(box->GetVertexPos(0), box->GetVertexPos(1), circle->Pos()) < circle->GetRadius() ||
-       PointToLineDistance(box->GetVertexPos(0), box->GetVertexPos(2), circle->Pos()) < circle->GetRadius() ||
-       PointToLineDistance(box->GetVertexPos(2), box->GetVertexPos(3), circle->Pos()) < circle->GetRadius() ||
-       PointToLineDistance(box->GetVertexPos(3), box->GetVertexPos(1), circle->Pos()) < circle->GetRadius())
-    {
-        return true;
-    }
-
     Vector2 quad[4];
     quad[0] = box->GetVertexPos(0);
     quad[1] = box->GetVertexPos(1);
     quad[2] = box->GetVertexPos(3);
     quad[3] = box->GetVertexPos(2);
 
-    if(PointInPolygon(quad, 4, circle->Pos()))
+    float radius = circle->GetRadius();
+    Vector2 circlePos = circle->Pos();
+
+    for (int i = 0; i < 4; i++)
+    {
+        if((quad[i]-circlePos).Magnitude() < radius)
+            return true;
+    }
+    
+    
+    if(PointToLineDistance(box->GetVertexPos(0), box->GetVertexPos(1), circlePos) < radius ||
+       PointToLineDistance(box->GetVertexPos(0), box->GetVertexPos(2), circlePos) < radius ||
+       PointToLineDistance(box->GetVertexPos(2), box->GetVertexPos(3), circlePos) < radius ||
+       PointToLineDistance(box->GetVertexPos(3), box->GetVertexPos(1), circlePos) < radius)
+    {
+        return true;
+    }
+
+
+    if(PointInPolygon(quad, 4, circlePos))
         return true;
 
     return false;
