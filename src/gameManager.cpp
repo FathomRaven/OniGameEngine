@@ -79,6 +79,11 @@ GameManager::~GameManager()
     Timer::Release();
     mTimer = nullptr;
 
+    delete playerOne;
+    playerOne = nullptr;
+
+    delete tile1;
+    tile1 = nullptr;
 }
 
 void GameManager::EarlyUpdate()
@@ -89,15 +94,7 @@ void GameManager::EarlyUpdate()
 
 void GameManager::Update()
 {
-    if(mInputMgr->KeyDown(SDL_SCANCODE_UP))
-        playerOne->Translate(Vector2(0.0f, -5.0f));
-    if(mInputMgr->KeyDown(SDL_SCANCODE_DOWN))
-        playerOne->Translate(Vector2(0.0f, 5.0f));
-    if(mInputMgr->KeyDown(SDL_SCANCODE_LEFT))
-        playerOne->Translate(Vector2(-5.0f, 0.0f));
-    if(mInputMgr->KeyDown(SDL_SCANCODE_RIGHT))
-        playerOne->Translate(Vector2(5.0f, 0.0f));
-
+    playerOne->Update();
 }
 
 void GameManager::Render()

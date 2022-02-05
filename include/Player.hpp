@@ -1,6 +1,7 @@
+#pragma once
 #include "PhysEntity.hpp"
 #include "Texture.hpp"
-
+#include "InputManager.hpp"
 
 class Player : public PhysEntity
 {
@@ -18,4 +19,6 @@ public:
 private:
     //To ignore collisions, define this function
     // bool IgnoreCollisions() override;
+
+    InputManager* mInputMgr;
 };

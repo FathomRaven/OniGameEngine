@@ -1,6 +1,6 @@
+#pragma once
 #include "PhysEntity.hpp"
 #include "Texture.hpp"
-
 
 class Tile : public PhysEntity
 {

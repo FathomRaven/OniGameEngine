@@ -1,3 +1,4 @@
+#pragma once
 #include "PhysicsManager.hpp"
 
 PhysicsManager* PhysicsManager::instanceM = nullptr;
@@ -43,7 +44,6 @@ void PhysicsManager::UnregisterEntity(unsigned long id)
                 found = true;
             }
         }
-        
     }
 }
 
@@ -84,10 +84,8 @@ void PhysicsManager::Update()
                             mCollisionLayers[j][l]->Hit(mCollisionLayers[i][k]);
                         }
                     }
-                    
                 }
             }
         }
     }
-    
 }

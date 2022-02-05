@@ -131,17 +131,14 @@ inline bool ColliderColliderCheck(Collider* c1, Collider* c2)
 {
     if(c1->GetType() == Collider::ColliderType::Circle && c2->GetType() == Collider::ColliderType::Circle)
     {
-        // printf("Circle Circle");
         return CircleCircleCollision(static_cast<CircleCollider*>(c1), static_cast<CircleCollider*>(c2));
     }
     else if(c1->GetType() == Collider::ColliderType::Box && c2->GetType() == Collider::ColliderType::Circle)
     {   
-        // printf("Box Circle");
         return BoxCircleCollision(static_cast<BoxCollider*>(c1), static_cast<CircleCollider*>(c2));
     }            
     else if(c2->GetType() == Collider::ColliderType::Box && c1->GetType() == Collider::ColliderType::Circle)
     {
-        // printf("Circle Box");
         return BoxCircleCollision(static_cast<BoxCollider*>(c2), static_cast<CircleCollider*>(c1));
     }
     else if(c1->GetType() == Collider::ColliderType::Box && c2->GetType() == Collider::ColliderType::Box)
