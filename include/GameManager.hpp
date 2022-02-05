@@ -41,6 +41,7 @@ private:
 
     Player* playerOne;
     Tile* tile1;
+    Tile* tile2;
 
     //Construct and destruct
 

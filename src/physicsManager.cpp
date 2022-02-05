@@ -1,4 +1,3 @@
-#pragma once
 #include "PhysicsManager.hpp"
 
 PhysicsManager* PhysicsManager::instanceM = nullptr;

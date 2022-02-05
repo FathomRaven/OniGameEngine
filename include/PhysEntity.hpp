@@ -14,7 +14,12 @@ public:
 
     virtual void Hit(PhysEntity* other);
 
+    void ClearHits();
+
     unsigned long GetID();
+    bool GetColliderHit(int index);
+
+    bool fullCheck = false;
 protected:
 
     unsigned long mID;

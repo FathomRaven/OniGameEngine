@@ -20,7 +20,6 @@ Tile::~Tile()
 
 void Tile::Hit(PhysEntity* other)
 {
-    printf("hit");
 }
 
 void Tile::Update()

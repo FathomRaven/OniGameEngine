@@ -11,7 +11,6 @@ BoxCollider::BoxCollider(Vector2 size)
     if(DEBUG_COLLIDERS)
     {
         SetDebugTexture(new Texture("BoxCollider.png"));
-        printf("Box is textured");
         mDebugTexture->Scale(size / 100.0f);
     }
 

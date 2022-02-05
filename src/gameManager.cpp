@@ -53,6 +53,9 @@ GameManager::GameManager()
     playerOne = new Player();
     tile1 = new Tile();
     tile1->Pos(Vector2(300.0f, 500.0f));
+
+    tile2 = new Tile();
+    tile2->Pos(Vector2(140.0f, 660.0f));
 }
 
 GameManager::~GameManager()
@@ -103,6 +106,7 @@ void GameManager::Render()
 
     playerOne->Render();
     tile1->Render();
+    tile2->Render();
 
     mGraphics->Render();
 }

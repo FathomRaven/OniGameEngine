@@ -35,6 +35,11 @@ unsigned long PhysEntity::GetID()
     return mID;
 }
 
+bool PhysEntity::GetColliderHit(int index)
+{
+    return mColliders[index]->cHit;
+}
+
 bool PhysEntity::CheckCollision(PhysEntity* other)
 {
     if(IgnoreCollisions() || other->IgnoreCollisions())
@@ -49,7 +54,7 @@ bool PhysEntity::CheckCollision(PhysEntity* other)
     {
         narrowPhaseCheck = true;
     }
-
+    bool returnValue = false;
     if(narrowPhaseCheck)
     {
         for (int i = 0; i < (int)mColliders.size(); i++)
@@ -58,16 +63,28 @@ bool PhysEntity::CheckCollision(PhysEntity* other)
             {
                 if(ColliderColliderCheck(mColliders[i], other->mColliders[j]))
                 {
-                    return true;
-                }
+                    if(!fullCheck)
+                        return true;
                     
+                    returnValue = true;
+                    mColliders[i]->cHit = true;
+                    other->mColliders[j]->cHit = true;
+                }
             }
-            
         }
-        
     }
+    if(!fullCheck)
+        return false;
     
-    return false;
+    return returnValue;
+}
+
+void PhysEntity::ClearHits()
+{
+    for (int i = 0; i < (int)mColliders.size(); i++)
+    {
+        mColliders[i]->cHit = false;
+    }
 }
 
 void PhysEntity::Hit(PhysEntity* other)
