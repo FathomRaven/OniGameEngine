@@ -10,7 +10,7 @@ public:
     //Play a .wav file as music 
     //@param filename the name of the .wav file to play 
     //@param loops the amount of times to loop the music, set to -1 as default
-    void PlayMusic(std::string filename, int loops = -1);
+    void PlayMusic(std::string filename, int loops = -1, int volume = 128);
     
     void PauseMusic(); //Pause any music playing
     void ResumeMusic(); //Resume any music playing
@@ -19,7 +19,7 @@ public:
     //@param filename the name of the file to play 
     //@parma loops how many times to loop it, set to 0 as default
     //@param channel the channel to play the music in
-    void PlaySFX(std::string filename, int loops = 0, int channel = 0);
+    void PlaySFX(std::string filename, int volume = 128, int loops = 0, int channel = 0);
 
 private:
 

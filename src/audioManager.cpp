@@ -32,8 +32,9 @@ AudioManager::~AudioManager()
     Mix_Quit();
 }
 
-void AudioManager::PlayMusic(std::string filename, int loops)
+void AudioManager::PlayMusic(std::string filename, int loops, int volume)
 {
+    Mix_VolumeMusic(volume);
     Mix_PlayMusic(mAssetMgr->GetMusic(filename), loops);
 }
 
@@ -49,7 +50,8 @@ void AudioManager::ResumeMusic()
         Mix_ResumeMusic();
 }
 
-void AudioManager::PlaySFX(std::string filename, int loops, int channel)
+void AudioManager::PlaySFX(std::string filename, int volume, int loops, int channel)
 {
+    Mix_VolumeChunk(mAssetMgr->GetSFX(filename), volume);
     Mix_PlayChannel(channel, mAssetMgr->GetSFX(filename), loops);
 }

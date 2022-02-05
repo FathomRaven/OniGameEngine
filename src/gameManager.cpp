@@ -103,8 +103,8 @@ void GameManager::EarlyUpdate()
 
 void GameManager::Update()
 {
-    // if(mInputMgr->KeyDown(SDL_SCANCODE_D))
-    //     cameraMgr->activeCamera->Translate(Vector2(5.0f, 0.0f));
+    if(mInputMgr->KeyPressed(SDL_SCANCODE_D))
+        mAudioMgr->PlaySFX("test.wav", 30);
     // if(mInputMgr->KeyDown(SDL_SCANCODE_A))
     //     cameraMgr->activeCamera->Translate(Vector2(-5.0f, 0.0f));
     // if(mInputMgr->KeyDown(SDL_SCANCODE_W))
@@ -136,7 +136,7 @@ void GameManager::LateUpdate()
 
 void GameManager::Run()
 {   
-    //mAudioMgr->PlayMusic("Dogsong_music.wav", -1);
+    mAudioMgr->PlayMusic("Dogsong_music.wav", -1, 128);
     //Loop runs as long as the game isn't quit
     while (!mQuit)
     {
