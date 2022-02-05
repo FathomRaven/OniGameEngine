@@ -79,6 +79,13 @@ void Texture::Render()
     if(cameraMgr->activeCamera != nullptr)
         pos = Pos(world) - cameraMgr->activeCamera->Pos(world);
 
+    if(pos.x + ((mWidth * scale.x)/2) < 0 || pos.y + ((mHeight * scale.y)/2) < 0 ||
+       pos.x - ((mWidth * scale.x)/2) > cameraMgr->activeCamera->cameraSize.x || pos.y - ((mHeight * scale.y)/2) > cameraMgr->activeCamera->cameraSize.y)
+    {
+        return;
+    }
+        
+
     mRenderRect.x = (int)(pos.x - mWidth * scale.x * 0.5f);
     mRenderRect.y = (int)(pos.y - mHeight * scale.y * 0.5f);
     mRenderRect.w = (int)(mWidth * scale.x);

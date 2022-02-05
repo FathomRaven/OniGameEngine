@@ -51,6 +51,9 @@ GameManager::GameManager()
     cameraMgr->SetActiveCamera(0);
 
     playerOne = new Player();
+    
+    playerOne->Pos(Vector2(600.0f, 600.0f));
+    
     tile1 = new Tile();
     tile1->Pos(Vector2(300.0f, 500.0f));
 
@@ -97,6 +100,15 @@ void GameManager::EarlyUpdate()
 
 void GameManager::Update()
 {
+    if(mInputMgr->KeyDown(SDL_SCANCODE_D))
+        cameraMgr->activeCamera->Translate(Vector2(5.0f, 0.0f));
+    if(mInputMgr->KeyDown(SDL_SCANCODE_A))
+        cameraMgr->activeCamera->Translate(Vector2(-5.0f, 0.0f));
+    if(mInputMgr->KeyDown(SDL_SCANCODE_W))
+        cameraMgr->activeCamera->Translate(Vector2(0.0f, -5.0f));
+    if(mInputMgr->KeyDown(SDL_SCANCODE_S))
+        cameraMgr->activeCamera->Translate(Vector2(0.0f, 5.0f));
+    
     playerOne->Update();
 }
 
