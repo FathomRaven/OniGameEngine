@@ -33,3 +33,8 @@ void Tile::Render()
     
     PhysEntity::Render();
 }
+
+void Tile::RenderStatic()
+{
+    tileTexture->RenderStatic();
+}

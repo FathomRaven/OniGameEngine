@@ -1,5 +1,10 @@
 #include "GameManager.hpp"
 
+//TODO:
+//Mouse collision
+//Buttons and button manager
+//Particle engine
+
 int shutup(int argc )
 {
     return argc;

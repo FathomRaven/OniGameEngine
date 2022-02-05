@@ -10,6 +10,7 @@ public:
 
     void Update();
     void Render();
+    void RenderStatic();
 
     void Hit(PhysEntity* other) override;
 
