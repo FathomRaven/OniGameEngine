@@ -2,6 +2,7 @@
 #include "PhysEntity.hpp"
 #include "Texture.hpp"
 #include "InputManager.hpp"
+#include "CameraManager.hpp"
 
 class Player : public PhysEntity
 {
@@ -21,4 +22,5 @@ private:
     // bool IgnoreCollisions() override;
 
     InputManager* mInputMgr;
+    CameraManager* mCameraMgr;
 };

@@ -90,6 +90,9 @@ GameManager::~GameManager()
 
     delete tile1;
     tile1 = nullptr;
+
+    delete tile2;
+    tile1 = nullptr;
 }
 
 void GameManager::EarlyUpdate()
@@ -100,14 +103,14 @@ void GameManager::EarlyUpdate()
 
 void GameManager::Update()
 {
-    if(mInputMgr->KeyDown(SDL_SCANCODE_D))
-        cameraMgr->activeCamera->Translate(Vector2(5.0f, 0.0f));
-    if(mInputMgr->KeyDown(SDL_SCANCODE_A))
-        cameraMgr->activeCamera->Translate(Vector2(-5.0f, 0.0f));
-    if(mInputMgr->KeyDown(SDL_SCANCODE_W))
-        cameraMgr->activeCamera->Translate(Vector2(0.0f, -5.0f));
-    if(mInputMgr->KeyDown(SDL_SCANCODE_S))
-        cameraMgr->activeCamera->Translate(Vector2(0.0f, 5.0f));
+    // if(mInputMgr->KeyDown(SDL_SCANCODE_D))
+    //     cameraMgr->activeCamera->Translate(Vector2(5.0f, 0.0f));
+    // if(mInputMgr->KeyDown(SDL_SCANCODE_A))
+    //     cameraMgr->activeCamera->Translate(Vector2(-5.0f, 0.0f));
+    // if(mInputMgr->KeyDown(SDL_SCANCODE_W))
+    //     cameraMgr->activeCamera->Translate(Vector2(0.0f, -5.0f));
+    // if(mInputMgr->KeyDown(SDL_SCANCODE_S))
+    //     cameraMgr->activeCamera->Translate(Vector2(0.0f, 5.0f));
     
     playerOne->Update();
 }
