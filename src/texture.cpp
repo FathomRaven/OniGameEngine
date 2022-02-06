@@ -84,21 +84,8 @@ void Texture::Render()
     {
         return;
     }
-        
 
-    mRenderRect.x = (int)(pos.x - mWidth * scale.x * 0.5f);
-    mRenderRect.y = (int)(pos.y - mHeight * scale.y * 0.5f);
-    mRenderRect.w = (int)(mWidth * scale.x);
-    mRenderRect.h = (int)(mHeight * scale.y);
-
-    //Draw texture to screen
-    mGraphics->DrawTexture(mTex, (mClipped)? &mClipRect : nullptr, &mRenderRect, Rotation(world));
-}
-
-void Texture::RenderStatic()
-{
-    Vector2 pos = Pos(world);
-    Vector2 scale = Scale(world);
+    // printf("Adjust: %f\n", pos.x);
 
     mRenderRect.x = (int)(pos.x - mWidth * scale.x * 0.5f);
     mRenderRect.y = (int)(pos.y - mHeight * scale.y * 0.5f);

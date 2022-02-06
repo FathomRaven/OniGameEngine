@@ -49,6 +49,7 @@ Vector2 BoxCollider::GetFurthestPoint()
 
 Vector2 BoxCollider::GetVertexPos(int index)
 {
+
     return mVerts[index]->Pos();
 }
 

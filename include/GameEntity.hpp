@@ -40,7 +40,6 @@ public:
 
     virtual void Update();
     virtual void Render();
-
 private:
     //Private variables
     Vector2 mPos;
@@ -49,5 +48,4 @@ private:
 
     bool mActive;
     GameEntity* mParent;
-
 };

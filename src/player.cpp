@@ -7,8 +7,11 @@ Player::Player()
     ClearHits();
     mInputMgr = InputManager::Instance();
     mCameraMgr = CameraManager::Instance();
+    mTimer = Timer::Instance();
     
     fullCheck = true;
+
+    speed = 5.0f;
 
     playerTexture = new Texture("Simpleplayer.png");
     playerTexture->Parent(this);
@@ -32,6 +35,8 @@ Player::~Player()
     playerTexture = nullptr;
 
     mInputMgr = nullptr;
+    mCameraMgr = nullptr;
+    mTimer = nullptr;
 }
 
 void Player::Hit(PhysEntity* other)
@@ -42,23 +47,19 @@ void Player::Update()
 {
     if(mInputMgr->KeyDown(SDL_SCANCODE_UP) && !GetColliderHit(0))
     {
-        Translate(Vector2(0.0f, -5.0f));  
-        mCameraMgr->activeCamera->Translate(Vector2(0.0f, -5.0f));
+        Translate(VEC2_UP * speed);  
     }
     if(mInputMgr->KeyDown(SDL_SCANCODE_DOWN) && !GetColliderHit(1))
     {
-        Translate(Vector2(0.0f, 5.0f));
-        mCameraMgr->activeCamera->Translate(Vector2(0.0f, 5.0f));
+        Translate(VEC2_DOWN * speed);
     }
     if(mInputMgr->KeyDown(SDL_SCANCODE_LEFT) && !GetColliderHit(2))
     {
-        Translate(Vector2(-5.0f, 0.0f));
-        mCameraMgr->activeCamera->Translate(Vector2(-5.0f, 0.0f));
+        Translate(VEC2_LEFT * speed);
     }
     if(mInputMgr->KeyDown(SDL_SCANCODE_RIGHT) && !GetColliderHit(3))
     {
-        Translate(Vector2(5.0f, 0.0f));
-        mCameraMgr->activeCamera->Translate(Vector2(5.0f, 0.0f));
+        Translate(VEC2_RIGHT * speed);
     }
 
     // if(GetColliderHit(0))

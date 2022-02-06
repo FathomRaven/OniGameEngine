@@ -3,6 +3,7 @@
 #include "Texture.hpp"
 #include "InputManager.hpp"
 #include "CameraManager.hpp"
+#include "Timer.hpp"
 
 class Player : public PhysEntity
 {
@@ -23,4 +24,7 @@ private:
 
     InputManager* mInputMgr;
     CameraManager* mCameraMgr;
+    Timer* mTimer;
+
+    float speed;
 };

@@ -93,6 +93,7 @@ bool GameEntity::Active()
 {
     return mActive;
 }
+
 //Parent setting and getting
 void GameEntity::Parent(GameEntity* parent) 
 {

@@ -17,9 +17,9 @@ public:
     ~Texture();
     //Render
     virtual void Render();
-    virtual void RenderStatic();
 
     Vector2 ScaledDimemsions();
+
 
 protected:
     //Texture

@@ -85,7 +85,7 @@ inline bool BoxBoxCollision(BoxCollider* b1, BoxCollider* b2)
     float b1Min = 0.0f, b1Max = 0.0f;
     float b2Min = 0.0f, b2Max = 0.0f;
     float proj1 = 0.0f, proj2 = 0.0f;
-
+    
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
