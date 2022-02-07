@@ -8,11 +8,16 @@
 class Cursor : public PhysEntity
 {    
 public:
+    static Cursor* Instance();
+    static void Release();
+
     Cursor();
     ~Cursor();
 
     void Update();
     void Render();
 private:
+    static Cursor* InstanceM;
+
     InputManager* mInput;
 };

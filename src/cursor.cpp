@@ -1,5 +1,21 @@
 #include "Cursor.hpp"
 
+Cursor* Cursor::InstanceM = nullptr;
+
+Cursor* Cursor::Instance()
+{
+    if(InstanceM == nullptr)
+        InstanceM = new Cursor();
+
+    return InstanceM;
+}
+
+void Cursor::Release()
+{
+    delete InstanceM;
+    InstanceM = nullptr;
+}
+
 Cursor::Cursor()
 {
     mInput = InputManager::Instance();

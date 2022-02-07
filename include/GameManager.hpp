@@ -37,10 +37,11 @@ private:
     PhysicsManager* physMgr;
     //Timer
     Timer* mTimer;
+    
+    Cursor* mCursor;
+
     //Different events
     SDL_Event mEvents;
-
-    Cursor* mCursor;
 
     Player* playerOne;
     Tile* tile1;

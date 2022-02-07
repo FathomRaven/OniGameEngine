@@ -51,7 +51,7 @@ GameManager::GameManager()
     
     cameraMgr->SetActiveCamera(0);
 
-    mCursor = new Cursor();
+    mCursor = Cursor::Instance();
     mCursor->Parent(cameraMgr->activeCamera);
 
     playerOne = new Player();
@@ -92,6 +92,9 @@ GameManager::~GameManager()
 
     Timer::Release();
     mTimer = nullptr;
+
+    Cursor::Release();
+    mCursor = nullptr;
 
     delete playerOne;
     playerOne = nullptr;
