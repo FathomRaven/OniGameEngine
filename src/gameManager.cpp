@@ -79,9 +79,6 @@ GameManager::~GameManager()
 
     PhysicsManager::Release();
     physMgr = nullptr;
-    
-    PhysicsManager::Release();
-    physMgr = nullptr;
 
     Graphics::Release();
     mGraphics = nullptr;

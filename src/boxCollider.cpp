@@ -23,7 +23,7 @@ BoxCollider::~BoxCollider()
         delete mVerts[i];
         mVerts[i] = nullptr;
     }
-   
+
 }
 
 Vector2 BoxCollider::GetFurthestPoint()

@@ -24,6 +24,7 @@ AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int 
 
 AnimatedTexture::~AnimatedTexture()
 {
+    mTimer = nullptr;
 }
 
 void AnimatedTexture::WrapMode(WRAP_MODE mode)
