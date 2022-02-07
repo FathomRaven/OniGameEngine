@@ -1,9 +1,10 @@
 #include "GameManager.hpp"
 
 //TODO:
-//Mouse collision
+//! Collisions don't appear to scale with physEntity
 //Buttons and button manager
 //Particle engine
+//Camera zooming
 
 int shutup(int argc )
 {

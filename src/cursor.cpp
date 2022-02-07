@@ -20,7 +20,7 @@ Cursor::Cursor()
 {
     mInput = InputManager::Instance();
 
-    AddCollider(new BoxCollider(Vector2(30.0f, 30.0f)), Pos());
+    AddCollider(new BoxCollider(Vector2(3.0f, 3.0f)), Pos());
 
     mID = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Mouse);
 }

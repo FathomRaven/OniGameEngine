@@ -54,6 +54,10 @@ GameManager::GameManager()
     mCursor = Cursor::Instance();
     mCursor->Parent(cameraMgr->activeCamera);
 
+    testButton = new Button("button.png", "Play", "emulogic.ttf", 48, {0, 0, 0, 255}, true);
+    testButton->Pos(Vector2(512.0f, 750.0f));
+    testButton->Parent(cameraMgr->activeCamera);
+
     playerOne = new Player();
     playerOne->Pos(Vector2(600.0f, 600.0f));
     
@@ -63,7 +67,8 @@ GameManager::GameManager()
     tile2 = new Tile();
     tile2->Pos(Vector2(140.0f, 660.0f));
     
-    cameraMgr->activeCamera->Pos(Vector2(playerOne->Pos().x - (mGraphics->SCREEN_WIDTH / 2), playerOne->Pos().y - (mGraphics->SCREEN_HEIGHT / 2)));
+    cameraMgr->activeCamera->Parent(playerOne);
+    // cameraMgr->activeCamera->Pos(Vector2(playerOne->Pos().x - (mGraphics->SCREEN_WIDTH / 2), playerOne->Pos().y - (mGraphics->SCREEN_HEIGHT / 2)));
 }
 
 GameManager::~GameManager()
@@ -122,7 +127,7 @@ void GameManager::Update()
         cameraMgr->activeCamera->Translate(Vector2(0.0f, -5.0f));
     if(mInputMgr->KeyDown(SDL_SCANCODE_S))
         cameraMgr->activeCamera->Translate(Vector2(0.0f, 5.0f));
-    
+    testButton->Update();
     playerOne->Update();
     mCursor->Update();
 }
@@ -132,6 +137,8 @@ void GameManager::Render()
     mGraphics->ClearBackBuffer();
 
     mCursor->Render();
+
+    testButton->Render();
     playerOne->Render();
     tile1->Render();
     tile2->Render();

@@ -11,6 +11,7 @@ GameManager singleton class. Handles most the main game loop
 #include "CameraManager.hpp"
 #include "PhysicsManager.hpp"
 #include "Cursor.hpp"
+#include "Button.hpp"
 
 class GameManager{
 public:    
@@ -43,6 +44,7 @@ private:
     //Different events
     SDL_Event mEvents;
 
+    Button* testButton;
     Player* playerOne;
     Tile* tile1;
     Tile* tile2;
