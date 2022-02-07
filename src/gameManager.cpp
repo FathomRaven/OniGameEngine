@@ -41,6 +41,7 @@ GameManager::GameManager()
     cameraMgr = CameraManager::Instance();
 
     physMgr = PhysicsManager::Instance();
+    physMgr->SetLayerCollisionMask(PhysicsManager::CollisionLayers::UI, PhysicsManager::CollisionFlags::Mouse);
     physMgr->SetLayerCollisionMask(PhysicsManager::CollisionLayers::Friendly, PhysicsManager::CollisionFlags::Tile);
 
     //Create timer instance
@@ -50,8 +51,10 @@ GameManager::GameManager()
     
     cameraMgr->SetActiveCamera(0);
 
+    mCursor = new Cursor();
+    mCursor->Parent(cameraMgr->activeCamera);
+
     playerOne = new Player();
-    
     playerOne->Pos(Vector2(600.0f, 600.0f));
     
     tile1 = new Tile();
@@ -59,6 +62,7 @@ GameManager::GameManager()
 
     tile2 = new Tile();
     tile2->Pos(Vector2(140.0f, 660.0f));
+    
     cameraMgr->activeCamera->Pos(Vector2(playerOne->Pos().x - (mGraphics->SCREEN_WIDTH / 2), playerOne->Pos().y - (mGraphics->SCREEN_HEIGHT / 2)));
 }
 
@@ -67,6 +71,9 @@ GameManager::~GameManager()
     //Clean up everything
     AssetManager::Release();
     mAssetMgr = nullptr;
+
+    PhysicsManager::Release();
+    physMgr = nullptr;
     
     PhysicsManager::Release();
     physMgr = nullptr;
@@ -114,12 +121,14 @@ void GameManager::Update()
         cameraMgr->activeCamera->Translate(Vector2(0.0f, 5.0f));
     
     playerOne->Update();
+    mCursor->Update();
 }
 
 void GameManager::Render()
 {
     mGraphics->ClearBackBuffer();
 
+    mCursor->Render();
     playerOne->Render();
     tile1->Render();
     tile2->Render();

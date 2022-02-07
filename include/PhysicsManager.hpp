@@ -11,6 +11,8 @@ public:
     {
         Friendly = 0,
         Tile,
+        UI,
+        Mouse,
         //-------------------------------------
         MaxLayers
     };
@@ -19,7 +21,9 @@ public:
     {
         None = 0x00,
         Friendly = 0x01,
-        Tile = 0x02
+        Tile = 0x02,
+        UI = 0x04,
+        Mouse = 0x08
     };
 
     static PhysicsManager* Instance();
