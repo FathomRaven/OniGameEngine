@@ -1,8 +1,6 @@
 #include "GameManager.hpp"
 
 //TODO:
-//! Collisions don't appear to scale with physEntity
-//Buttons and button manager
 //Particle engine
 //Camera zooming
 

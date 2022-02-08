@@ -37,7 +37,7 @@ Vector2 GameEntity::Pos(SPACE space)
 
     do
     {
-        parentScale = mParent->Scale(local);
+        parentScale = parent->Scale(local);
         finalPos = RotateVector(Vector2(finalPos.x * parentScale.x, finalPos.y * parentScale.y), parent->Rotation(local));
         finalPos += parent->Pos(local);
 
