@@ -59,7 +59,7 @@ GameManager::GameManager()
     testButton->Parent(cameraMgr->activeCamera);
 
     playerOne = new Player();
-    playerOne->Pos(Vector2(600.0f, 600.0f));
+    playerOne->Pos(Vector2(600.0f, 500.0f));
     
     tile1 = new Tile();
     tile1->Pos(Vector2(300.0f, 500.0f));
@@ -67,7 +67,7 @@ GameManager::GameManager()
     tile2 = new Tile();
     tile2->Pos(Vector2(140.0f, 660.0f));
     
-    cameraMgr->activeCamera->Parent(playerOne);
+    // cameraMgr->activeCamera->Parent(playerOne);
     // cameraMgr->activeCamera->Pos(Vector2(playerOne->Pos().x - (mGraphics->SCREEN_WIDTH / 2), playerOne->Pos().y - (mGraphics->SCREEN_HEIGHT / 2)));
 }
 
