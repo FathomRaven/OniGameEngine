@@ -28,5 +28,6 @@ Vector2 CircleCollider::GetFurthestPoint()
 
 float CircleCollider::GetRadius()
 {
+    //Set radius to be equal to parent scale
     return mRadius * Parent()->Scale().Magnitude();
 }

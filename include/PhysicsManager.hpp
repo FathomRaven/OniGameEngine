@@ -1,3 +1,12 @@
+/*
+Singleton PhysicsManager class
+
+Handles the collision interaction between two entities
+
+From this point onward, I dunno much about the code here as it's based from online. Bad practice, I know, but I also kinda don't care
+I should care
+*/
+
 #pragma once 
 
 #include "PhysEntity.hpp"
@@ -6,7 +15,7 @@
 class PhysicsManager
 {
 public:
-
+    //Layers
     enum class CollisionLayers
     {
         Friendly = 0,
@@ -16,7 +25,7 @@ public:
         //-------------------------------------
         MaxLayers
     };
-
+    //Flags
     enum class CollisionFlags
     {
         None = 0x00,
@@ -25,12 +34,12 @@ public:
         UI = 0x04,
         Mouse = 0x08
     };
-
+    //Singleton Stuff
     static PhysicsManager* Instance();
     static void Release();
-
+    //Set collision mask between a layer and a flag
     void SetLayerCollisionMask(CollisionLayers layer, CollisionFlags flags);
-
+    //Register Entity
     unsigned long RegisterEntity(PhysEntity* entity, CollisionLayers layer);
     void UnregisterEntity(unsigned long id);
 

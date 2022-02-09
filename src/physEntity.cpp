@@ -29,10 +29,15 @@ PhysEntity::~PhysEntity()
         PhysicsManager::Instance()->UnregisterEntity(mID);
     }
 }
-
+//Set and get mID
 unsigned long PhysEntity::GetID()
 {
     return mID;
+}
+
+void PhysEntity::SetID(unsigned long ID)
+{
+    mID = ID;
 }
 
 bool PhysEntity::GetColliderHit(int index)
@@ -44,7 +49,7 @@ bool PhysEntity::CheckCollision(PhysEntity* other)
 {
     if(IgnoreCollisions() || other->IgnoreCollisions())
         return false;
-
+    //Check to see if broadPhase colliders are colliding. If so, move on to narrow check
     bool narrowPhaseCheck = false;
     if(mBroadPhaseCollider && other->mBroadPhaseCollider)
     {
@@ -102,7 +107,7 @@ void PhysEntity::AddCollider(Collider* collider, Vector2 localPos)
     collider->Parent(this);
     collider->Pos(localPos);
     mColliders.push_back(collider);
-
+    //If there isn't a circle collider, set broadphase collider
     if(mColliders.size() > 1 || mColliders[0]->GetType() != Collider::ColliderType::Circle)
     {
         float furthestDist = mColliders[0]->GetFurthestPoint().Magnitude();

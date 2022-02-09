@@ -1,3 +1,7 @@
+/*
+Circle Collider class
+*/
+
 #pragma once
 #include "Collider.hpp"
 
@@ -11,5 +15,6 @@ public:
 
     float GetRadius();
 private:
+    //Radius of the cirlce
     float mRadius;
 };

@@ -26,18 +26,18 @@ This all works best with VSCode bettercomments extension
 //! Add in a way for individual colliders to detect what layer they are colliding with
 //! Occasional odd collision
     //? More info needed
+//Improve comments
+    /*
+    Some poor wording throughout
+    Add in param info
+    
+    Still need to comment:
+    Buttons
+    CameraMgr
+    Cursor
+    */
 //// Particle engine
 //// Camera zooming
-
-int shutup(int argc )
-{
-    return argc;
-}
-
-char ** shutup(char ** argv)
-{
-    return argv;
-}
 
 int main(int argc, char ** argv){
 
@@ -47,12 +47,9 @@ int main(int argc, char ** argv){
     //Run the game loop
     game->Run();
 
-    //Clean up gamemanager
+    //Clean up gameManager
     GameManager::Release();
     game = nullptr;
-
-    shutup(argc);
-    shutup(argv);
 
     return 0;
 }

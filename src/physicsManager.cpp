@@ -26,7 +26,7 @@ unsigned long PhysicsManager::RegisterEntity(PhysEntity* entity, CollisionLayers
     mCollisionLayers[static_cast<unsigned int>(layer)].push_back(entity);
 
     mLastID++;
-
+    entity->SetID(mLastID);
     return mLastID;
 }
 

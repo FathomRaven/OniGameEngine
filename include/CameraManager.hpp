@@ -1,3 +1,7 @@
+/*
+Manager to keep track of cameras
+*/
+
 #pragma once
 
 #include "Camera.hpp"
@@ -21,5 +25,4 @@ private:
     static CameraManager* InstanceM;
     
     std::vector<Camera*> cameras;
-    
 };

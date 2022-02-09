@@ -84,12 +84,14 @@ void GameManager::EarlyUpdate()
 
 void GameManager::Update()
 {
-
+    //Update objects in here
 }
 
 void GameManager::Render()
 {
     mGraphics->ClearBackBuffer();
+
+    //Render things in here
 
     mGraphics->Render();
 }

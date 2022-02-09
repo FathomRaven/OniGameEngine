@@ -1,3 +1,12 @@
+/*
+Include file for collision detection
+
+Has:
+Circle to Circle
+Circle to Box
+Box to Box
+*/
+
 #pragma once
 
 #include "CircleCollider.hpp"

@@ -1,3 +1,7 @@
+/*
+Rudimentry Camera Class
+*/
+
 #pragma once
 
 #include "GameEntity.hpp"

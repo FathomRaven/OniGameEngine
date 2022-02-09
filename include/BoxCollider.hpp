@@ -1,3 +1,9 @@
+/*
+Box collider class
+
+A collider, in the shape of a box! Truely amazing
+*/
+
 #pragma once
 #include "Collider.hpp"
 
@@ -12,6 +18,7 @@ public:
     Vector2 GetVertexPos(int index);
 
 private:
+    //Vertices of the box
     static const int MAX_VERTS = 4;
 
     GameEntity* mVerts[MAX_VERTS];
