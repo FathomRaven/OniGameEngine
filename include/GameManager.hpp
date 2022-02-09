@@ -6,8 +6,6 @@ GameManager singleton class. Handles most the main game loop
 #include "AudioManager.hpp"
 #include "InputManager.hpp"
 #include "AnimatedTexture.hpp"
-#include "Player.hpp"
-#include "Tile.hpp"
 #include "CameraManager.hpp"
 #include "PhysicsManager.hpp"
 #include "Cursor.hpp"
@@ -43,11 +41,6 @@ private:
 
     //Different events
     SDL_Event mEvents;
-
-    Button* testButton;
-    Player* playerOne;
-    Tile* tile1;
-    Tile* tile2;
 
     //Construct and destruct
 

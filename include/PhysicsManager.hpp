@@ -10,7 +10,7 @@ public:
     enum class CollisionLayers
     {
         Friendly = 0,
-        Tile,
+        Stationary,
         UI,
         Mouse,
         //-------------------------------------
@@ -21,7 +21,7 @@ public:
     {
         None = 0x00,
         Friendly = 0x01,
-        Tile = 0x02,
+        Stationary = 0x02,
         UI = 0x04,
         Mouse = 0x08
     };
