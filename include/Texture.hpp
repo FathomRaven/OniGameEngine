@@ -18,8 +18,7 @@ public:
     //Render
     virtual void Render();
 
-    Vector2 ScaledDimemsions();
-
+    Vector2 ScaledDimensions();
 
 protected:
     //Texture

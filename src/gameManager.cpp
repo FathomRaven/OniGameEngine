@@ -58,7 +58,7 @@ GameManager::GameManager()
     mText = new Texture("Hello World!", "test.ttf", 32, {0, 0, 0, 255});
     mText->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, 600.0f));
     
-    mExplainText = new Texture("Use arrow keys to move around", "test.ttf", 32, {0, 0, 0, 255});
+    mExplainText = new Texture("Use arrow keys to move around, hit 'D' for a cool sound", "test.ttf", 32, {0, 0, 0, 255});
     mExplainText->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, 100.0f));
     //Create a button that will only be clicked once, with the text of "Press me"
     mButton = new Button("BoxCollider.png", "Press me", "test.ttf", 16, {0, 0, 0, 255}, true);
@@ -129,6 +129,8 @@ void GameManager::Update()
         mPlayer->Translate(VEC2_DOWN * 5.0f);
     if(mInputMgr->KeyDown(SDL_SCANCODE_UP))
         mPlayer->Translate(VEC2_UP * 5.0f);
+    if(mInputMgr->KeyDown(SDL_SCANCODE_D))
+        mAudioMgr->PlaySFX("boom.wav");
 
     mButton->Update();
 

@@ -1,5 +1,5 @@
 #include "CameraManager.hpp"
-
+//Basic Singleton stuff
 CameraManager* CameraManager::InstanceM = nullptr;
 
 CameraManager* CameraManager::Instance()
@@ -23,7 +23,6 @@ CameraManager::CameraManager()
 
 CameraManager::~CameraManager()
 {
-
     for (int i = 0; i < (int)cameras.size(); i++)
     {
         delete cameras[i];

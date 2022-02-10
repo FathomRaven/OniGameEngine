@@ -26,7 +26,7 @@ bool Graphics::Initialized()
     return sInitalized;
 }
 
-//Constructer and destructer
+//Constructer and destructor
 
 Graphics::Graphics()
 {

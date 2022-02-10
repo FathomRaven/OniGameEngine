@@ -13,7 +13,7 @@ Button::Button(std::string filename, bool _oneClick)
     mBackTexture = new Texture(filename);
     mBackTexture->Parent(this);
 
-    AddCollider(new BoxCollider(mBackTexture->ScaledDimemsions()));
+    AddCollider(new BoxCollider(mBackTexture->ScaledDimensions()));
 
     mID = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::UI);
 }
@@ -34,7 +34,7 @@ Button::Button(std::string backTexFilename, std::string frontTexFilename, bool _
     mFrontTexture = new Texture(frontTexFilename);
     mFrontTexture->Parent(this);
 
-    AddCollider(new BoxCollider(mBackTexture->ScaledDimemsions()));
+    AddCollider(new BoxCollider(mBackTexture->ScaledDimensions()));
 
     mID = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::UI);
 }
@@ -55,7 +55,7 @@ Button::Button(std::string backTexFilename, std::string frontText, std::string f
     mFrontTexture = new Texture(frontText, frontTextFontpath, frontTextSize, frontTextColor);
     mFrontTexture->Parent(this);
 
-    AddCollider(new BoxCollider(mBackTexture->ScaledDimemsions()));
+    AddCollider(new BoxCollider(mBackTexture->ScaledDimensions()));
 
     mID = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::UI);
 }

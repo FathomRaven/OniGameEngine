@@ -1,5 +1,5 @@
 /*
-Rudimentry Camera Class
+Rudimentary Camera Class
 */
 
 #pragma once

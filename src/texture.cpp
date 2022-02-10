@@ -59,13 +59,13 @@ Texture::~Texture()
     mGraphics = nullptr;
 }
 
-Vector2 Texture::ScaledDimemsions()
+Vector2 Texture::ScaledDimensions()
 {
-    Vector2 scaledDimemsions = Scale(world);
-    scaledDimemsions.x *= mWidth;
-    scaledDimemsions.y *= mHeight;
+    Vector2 ScaledDimensions = Scale(world);
+    ScaledDimensions.x *= mWidth;
+    ScaledDimensions.y *= mHeight;
 
-    return scaledDimemsions;
+    return ScaledDimensions;
 }
 
 //Render to screen
@@ -76,6 +76,7 @@ void Texture::Render()
     Vector2 pos = Pos(world);
     Vector2 scale = Scale(world);
     // Changes where the object is rendered based on where the camera is
+    // If theres no camera, ignore this part.
     if(cameraMgr->activeCamera != nullptr)
     {
         pos = Pos(world) - cameraMgr->activeCamera->Pos(world);

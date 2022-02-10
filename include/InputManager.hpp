@@ -50,7 +50,7 @@ private:
     int mMouseYPos;
 
     //-----
-    //Constructer and destructer
+    //Constructer and destructor
     InputManager();
     ~InputManager();
 };

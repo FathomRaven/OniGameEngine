@@ -14,7 +14,7 @@ void Timer::Release()
     delete sInstance;
     sInstance = nullptr;
 }
-//Constucter and destructer
+//Constucter and destructor
 Timer::Timer()
 {
     Reset();

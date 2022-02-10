@@ -2,7 +2,7 @@
 Game entity class, from which all textures are from
 */
 #include "GameEntity.hpp"
-//Constructer and destructer
+//Constructer and destructor
 GameEntity::GameEntity(float x, float y)
 {
     mPos.x = x;

@@ -15,7 +15,7 @@ public:
     enum WRAP_MODE {once = 0, loop = 1}; //If the animation goes once or loops
     enum ANIM_DIR {horizontal = 0, vertical = 1}; //Direction of sprite sheet
 
-    //Constructer and destructer
+    //Constructer and destructor
 
     AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, ANIM_DIR animationDir);
     ~AnimatedTexture();

@@ -1,3 +1,10 @@
+/*
+Cursor singleton class
+
+Used only for collisions with UI elements
+Nothing special here
+*/
+
 #pragma once
 
 #include "PhysEntity.hpp"
