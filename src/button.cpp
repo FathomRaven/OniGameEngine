@@ -89,7 +89,6 @@ void Button::Hit(PhysEntity* other)
 {
     if(other != mCursor)
         return;
-    
     isHovered = true;
 }
 

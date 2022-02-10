@@ -75,19 +75,19 @@ void Texture::Render()
     //Set positions
     Vector2 pos = Pos(world);
     Vector2 scale = Scale(world);
-
+    // Changes where the object is rendered based on where the camera is
     if(cameraMgr->activeCamera != nullptr)
     {
         pos = Pos(world) - cameraMgr->activeCamera->Pos(world);
     }
 
+    // Checks if the texture is visible to the camera
+    // Looks really messy, need to find a better way
     if(pos.x + ((mWidth * scale.x)/2) < 0 || pos.y + ((mHeight * scale.y)/2) < 0 ||
        pos.x - ((mWidth * scale.x)/2) > cameraMgr->activeCamera->cameraSize.x || pos.y - ((mHeight * scale.y)/2) > cameraMgr->activeCamera->cameraSize.y)
     {
         return;
     }
-
-    // printf("Adjust: %f\n", pos.x);
 
     mRenderRect.x = (int)(pos.x - mWidth * scale.x * 0.5f);
     mRenderRect.y = (int)(pos.y - mHeight * scale.y * 0.5f);

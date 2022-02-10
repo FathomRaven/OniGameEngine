@@ -27,7 +27,7 @@ private:
     const int FRAME_RATE = 60;
     //If quit yet
     bool mQuit;
-    //Various mgrs
+    //Various Managers
     Graphics* mGraphics;
     AssetManager* mAssetMgr;
     InputManager* mInputMgr;
@@ -41,6 +41,13 @@ private:
 
     //Different events
     SDL_Event mEvents;
+
+    //! Example code below
+
+    Texture* mPlayer;
+    Texture* mText;
+    Texture* mExplainText;
+    Button* mButton;
 
     //Construct and destruct
 

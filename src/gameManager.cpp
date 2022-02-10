@@ -18,7 +18,7 @@ void GameManager::Release()
     sInstance = nullptr;
 }
 
-//Constructer and destructer
+//Constructer and destructor
 
 GameManager::GameManager()
 {
@@ -45,6 +45,27 @@ GameManager::GameManager()
     mCursor->Parent(cameraMgr->activeCamera);
 
     physMgr->SetLayerCollisionMask(PhysicsManager::CollisionLayers::UI, PhysicsManager::CollisionFlags::Mouse);
+
+    /*
+    Example code
+    */
+    //Create player texture, from simpleplayer image
+    //Then scale and position it 
+    mPlayer = new Texture("Simpleplayer.png");
+    mPlayer->Scale(Vector2(0.5f, 0.5f));
+    mPlayer->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, mGraphics->SCREEN_HEIGHT/2));
+    //Create text, from test.ttf font file
+    mText = new Texture("Hello World!", "test.ttf", 32, {0, 0, 0, 255});
+    mText->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, 600.0f));
+    
+    mExplainText = new Texture("Use arrow keys to move around", "test.ttf", 32, {0, 0, 0, 255});
+    mExplainText->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, 100.0f));
+    //Create a button that will only be clicked once, with the text of "Press me"
+    mButton = new Button("BoxCollider.png", "Press me", "test.ttf", 16, {0, 0, 0, 255}, true);
+    mButton->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, 800.0f));
+    //Parent button to camera, and parent camera to player
+    mButton->Parent(cameraMgr->activeCamera);
+    cameraMgr->activeCamera->Parent(mPlayer);
 }
 
 GameManager::~GameManager()
@@ -74,6 +95,16 @@ GameManager::~GameManager()
     Cursor::Release();
     mCursor = nullptr;
 
+    //Example Code
+    
+    delete mPlayer;
+    mPlayer = nullptr;
+    delete mButton;
+    mButton = nullptr;
+    delete mText;
+    mText = nullptr;
+    delete mExplainText;
+    mExplainText = nullptr;
 }
 
 void GameManager::EarlyUpdate()
@@ -85,6 +116,25 @@ void GameManager::EarlyUpdate()
 void GameManager::Update()
 {
     //Update objects in here
+
+    //Example Code
+
+    mCursor->Update();
+    //Move player if arrow keys are down
+    if(mInputMgr->KeyDown(SDL_SCANCODE_LEFT))
+        mPlayer->Translate(VEC2_LEFT * 5.0f);
+    if(mInputMgr->KeyDown(SDL_SCANCODE_RIGHT))
+        mPlayer->Translate(VEC2_RIGHT * 5.0f);
+    if(mInputMgr->KeyDown(SDL_SCANCODE_DOWN))
+        mPlayer->Translate(VEC2_DOWN * 5.0f);
+    if(mInputMgr->KeyDown(SDL_SCANCODE_UP))
+        mPlayer->Translate(VEC2_UP * 5.0f);
+
+    mButton->Update();
+
+    if(mButton->Clicked())
+        mText->Rotate(1.0f);
+
 }
 
 void GameManager::Render()
@@ -92,6 +142,15 @@ void GameManager::Render()
     mGraphics->ClearBackBuffer();
 
     //Render things in here
+
+    //Example Code
+    mPlayer->Render();
+    if(mButton->Clicked())
+        mText->Render();
+    
+    mButton->Render();
+    mExplainText->Render();
+    mPlayer->Render();
 
     mGraphics->Render();
 }
@@ -106,7 +165,6 @@ void GameManager::LateUpdate()
 
 void GameManager::Run()
 {   
-    // mAudioMgr->PlayMusic("Dogsong_music.wav", -1, 128);
     //Loop runs as long as the game isn't quit
     while (!mQuit)
     {

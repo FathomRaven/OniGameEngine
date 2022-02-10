@@ -16,12 +16,14 @@
 
 //TODO:
 /*
-Terminolgy: 
+Terminology: 
 ! Means error
 // Meanings it's being ignored for now
 * Is worked on
 This all works best with VSCode bettercomments extension
 */
+
+//Docs
 
 //! Add in a way for individual colliders to detect what layer they are colliding with
 //! Occasional odd collision
@@ -30,9 +32,9 @@ This all works best with VSCode bettercomments extension
     /*
     Some poor wording throughout
     Add in param info
+    Spell checking
     
     Still need to comment:
-    Buttons
     CameraMgr
     Cursor
     */
