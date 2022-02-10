@@ -2,6 +2,9 @@
 
 Basic little game engine, based off of the tutorial series from Ather Omar.
 
+Docs in github wiki:
+https://github.com/FathomRaven/OniGameEngine/wiki
+
 #### Libraries Used:
 
 * SDL
