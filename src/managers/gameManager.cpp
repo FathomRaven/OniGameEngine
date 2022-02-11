@@ -129,7 +129,8 @@ void GameManager::Update()
         mPlayer->Translate(VEC2_DOWN * 5.0f);
     if(mInputMgr->KeyDown(SDL_SCANCODE_UP))
         mPlayer->Translate(VEC2_UP * 5.0f);
-    if(mInputMgr->KeyDown(SDL_SCANCODE_D))
+    
+    if(mInputMgr->KeyPressed(SDL_SCANCODE_D))
         mAudioMgr->PlaySFX("boom.wav");
 
     mButton->Update();
@@ -181,7 +182,6 @@ void GameManager::Run()
             {
                 mQuit = true;
             }
-
             
         }
         //Loop if the deltaTime is at the right rate
