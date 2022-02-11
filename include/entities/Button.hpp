@@ -28,6 +28,7 @@ public:
     //@param frontTextColor The color of the front textures tex
     //@param _oneClick If the button should only be clicked once
     Button(std::string backTexFilename, std::string frontText, std::string frontTextFontpath, int frontTextSize, SDL_Color frontTextColor, bool _oneClick = false);
+        
     ~Button();
 
     void Update() override;
