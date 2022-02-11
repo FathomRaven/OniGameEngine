@@ -1,7 +1,7 @@
 /*
 Box collider class
 
-A collider, in the shape of a box! Truely amazing
+A collider, in the shape of a box! Truly amazing
 */
 
 #pragma once

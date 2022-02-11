@@ -30,8 +30,8 @@ public:
     Button(std::string backTexFilename, std::string frontText, std::string frontTextFontpath, int frontTextSize, SDL_Color frontTextColor, bool _oneClick = false);
     ~Button();
 
-    void Update();
-    void Render();
+    void Update() override;
+    void Render() override;
 
     void Hit(PhysEntity* other) override;
 
