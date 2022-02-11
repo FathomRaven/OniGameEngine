@@ -4,11 +4,7 @@ GameManager singleton class. Handles most the main game loop
 #pragma once
 
 #include "AudioManager.hpp"
-#include "InputManager.hpp"
 #include "AnimatedTexture.hpp"
-#include "CameraManager.hpp"
-#include "PhysicsManager.hpp"
-#include "Cursor.hpp"
 #include "Button.hpp"
 
 class GameManager{

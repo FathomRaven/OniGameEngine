@@ -122,13 +122,13 @@ void GameManager::Update()
     mCursor->Update();
     //Move player if arrow keys are down
     if(mInputMgr->KeyDown(SDL_SCANCODE_LEFT))
-        mPlayer->Translate(VEC2_LEFT * 5.0f);
+        mPlayer->Translate((VEC2_LEFT * mTimer->DeltaTime()) * 5.0f);
     if(mInputMgr->KeyDown(SDL_SCANCODE_RIGHT))
-        mPlayer->Translate(VEC2_RIGHT * 5.0f);
+        mPlayer->Translate((VEC2_RIGHT * mTimer->DeltaTime()) * 5.0f);
     if(mInputMgr->KeyDown(SDL_SCANCODE_DOWN))
-        mPlayer->Translate(VEC2_DOWN * 5.0f);
+        mPlayer->Translate((VEC2_DOWN * mTimer->DeltaTime()) * 5.0f);
     if(mInputMgr->KeyDown(SDL_SCANCODE_UP))
-        mPlayer->Translate(VEC2_UP * 5.0f);
+        mPlayer->Translate((VEC2_UP * mTimer->DeltaTime()) * 5.0f);
     
     if(mInputMgr->KeyPressed(SDL_SCANCODE_D))
         mAudioMgr->PlaySFX("boom.wav");
@@ -187,7 +187,7 @@ void GameManager::Run()
         //Loop if the deltaTime is at the right rate
         if(mTimer->DeltaTime() >= (1.0f / FRAME_RATE))
         {
-            //printf("DeltaTime: %F\n", mTimer->DeltaTime());
+            // printf("DeltaTime: %F\n", mTimer->DeltaTime());
 
             EarlyUpdate();
             Update();
