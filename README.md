@@ -12,8 +12,8 @@ https://github.com/FathomRaven/OniGameEngine/wiki
 * SDL_TTF
 * SDL_Mixer
 
-#### Compiling with GCC:
-```
-g++ src/*.cpp -I./include/ -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -o ./bin/debug/main.exe
-```
+#### Compiling
+
+Run make, uses clang++
+
 Executable must be in debug in order to find assets 
