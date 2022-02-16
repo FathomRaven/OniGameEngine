@@ -24,8 +24,6 @@ public:
     ColliderType GetType();
 
     virtual void Render();
-    //If hit or not
-    bool cHit = false;
 protected:
     ColliderType mType;
     //Set to true to render colliders

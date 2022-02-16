@@ -19,13 +19,11 @@ public:
     //Check if colliding with another physics entity
     bool CheckCollision(PhysEntity* other);
 
-    virtual void Hit(PhysEntity* other);
+    virtual void Hit(PhysEntity* other, int collliderIndex = 0);
     //Clear collider hits
-    void ClearHits();
 
     unsigned long GetID();
     void SetID(unsigned long ID);
-    bool GetColliderHit(int index);
     //Check through all colliders
     bool fullCheck = false;
 protected:

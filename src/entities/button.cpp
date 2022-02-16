@@ -85,11 +85,12 @@ bool Button::Hovered()
     return isHovered;
 }
 
-void Button::Hit(PhysEntity* other)
+void Button::Hit(PhysEntity* other, int collliderIndex)
 {
     if(PhysicsManager::Instance()->GetEntityLayer(other->GetID()) != 3)
         return;
     isHovered = true;
+    mColliders[0];
 }
 
 void Button::Update()
