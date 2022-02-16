@@ -34,7 +34,7 @@ public:
     void Update() override;
     void Render() override;
 
-    void Hit(PhysEntity* other) override;
+    void Hit(PhysEntity* other, int collliderIndex = 0) override;
 
     bool Clicked();
     bool Hovered();

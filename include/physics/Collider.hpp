@@ -24,12 +24,10 @@ public:
     ColliderType GetType();
 
     virtual void Render();
-    //If hit or not
-    bool cHit = false;
 protected:
     ColliderType mType;
     //Set to true to render colliders
-    static const bool DEBUG_COLLIDERS = false;
+    static const bool DEBUG_COLLIDERS = true;
     Texture* mDebugTexture;
 
     void SetDebugTexture(Texture* texture);

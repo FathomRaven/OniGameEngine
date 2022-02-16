@@ -85,11 +85,12 @@ bool Button::Hovered()
     return isHovered;
 }
 
-void Button::Hit(PhysEntity* other)
+void Button::Hit(PhysEntity* other, int collliderIndex)
 {
-    if(other != mCursor)
+    if(PhysicsManager::Instance()->GetEntityLayer(other->GetID()) != 3)
         return;
     isHovered = true;
+    mColliders[0];
 }
 
 void Button::Update()
@@ -110,6 +111,4 @@ void Button::Render()
     mBackTexture->Render();
     if(mFrontTexture != nullptr)
         mFrontTexture->Render();
-
-    PhysEntity::Render();
 }

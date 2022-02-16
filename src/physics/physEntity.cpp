@@ -40,11 +40,6 @@ void PhysEntity::SetID(unsigned long ID)
     mID = ID;
 }
 
-bool PhysEntity::GetColliderHit(int index)
-{
-    return mColliders[index]->cHit;
-}
-
 bool PhysEntity::CheckCollision(PhysEntity* other)
 {
     if(IgnoreCollisions() || other->IgnoreCollisions())
@@ -68,12 +63,17 @@ bool PhysEntity::CheckCollision(PhysEntity* other)
             {
                 if(ColliderColliderCheck(mColliders[i], other->mColliders[j]))
                 {
-                    if(!fullCheck)
+                    if(!fullCheck && !other->fullCheck)
+                    {
+                        Hit(other);
+                        other->Hit(this);
                         return true;
-                    
+                    }
+
+                    Hit(other, i);
+                    other->Hit(this, j);
+
                     returnValue = true;
-                    mColliders[i]->cHit = true;
-                    other->mColliders[j]->cHit = true;
                 }
             }
         }
@@ -84,17 +84,8 @@ bool PhysEntity::CheckCollision(PhysEntity* other)
     return returnValue;
 }
 
-void PhysEntity::ClearHits()
+void PhysEntity::Hit(PhysEntity* other, int collliderIndex)
 {
-    for (int i = 0; i < (int)mColliders.size(); i++)
-    {
-        mColliders[i]->cHit = false;
-    }
-}
-
-void PhysEntity::Hit(PhysEntity* other)
-{
-
 }
 
 bool PhysEntity::IgnoreCollisions()
