@@ -59,6 +59,8 @@ int PhysicsManager::GetEntityLayer(unsigned long id)
             }
         }
     }
+
+    return 0;
 }
 
 PhysicsManager::PhysicsManager()

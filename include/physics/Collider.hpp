@@ -27,7 +27,7 @@ public:
 protected:
     ColliderType mType;
     //Set to true to render colliders
-    static const bool DEBUG_COLLIDERS = false;
+    static const bool DEBUG_COLLIDERS = true;
     Texture* mDebugTexture;
 
     void SetDebugTexture(Texture* texture);
