@@ -111,6 +111,4 @@ void Button::Render()
     mBackTexture->Render();
     if(mFrontTexture != nullptr)
         mFrontTexture->Render();
-
-    PhysEntity::Render();
 }
