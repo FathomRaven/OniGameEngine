@@ -45,6 +45,22 @@ void PhysicsManager::UnregisterEntity(unsigned long id)
     }
 }
 
+int PhysicsManager::GetEntityLayer(unsigned long id)
+{
+    bool found = false;
+    for (int i = 0; i < (int)static_cast<unsigned int>(CollisionLayers::MaxLayers) && !found; i++)
+    {
+        for (int j = 0; j < (int)mCollisionLayers[i].size() && !found; j++)
+        {
+            if(mCollisionLayers[i][j]->GetID() == id)
+            {
+                found = true;
+                return i;
+            }
+        }
+    }
+}
+
 PhysicsManager::PhysicsManager()
 {
     mLastID = 0;

@@ -43,6 +43,8 @@ public:
     unsigned long RegisterEntity(PhysEntity* entity, CollisionLayers layer);
     void UnregisterEntity(unsigned long id);
 
+    int GetEntityLayer(unsigned long id);
+
     void Update();
 
 private:

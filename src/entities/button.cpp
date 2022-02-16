@@ -87,7 +87,7 @@ bool Button::Hovered()
 
 void Button::Hit(PhysEntity* other)
 {
-    if(other != mCursor)
+    if(PhysicsManager::Instance()->GetEntityLayer(other->GetID()) != 3)
         return;
     isHovered = true;
 }
