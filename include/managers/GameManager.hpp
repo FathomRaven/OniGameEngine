@@ -14,8 +14,18 @@ public:
     static GameManager* Instance();
     static void Release();
     //Run loop
-    void Run();
+    bool Run();
 
+    bool FrameLimit();
+    
+    void AddToRenders(GameEntity* entity);
+    void AddToUpdates(GameEntity* entity);
+
+    void EarlyUpdate();
+    void Update();
+    void LateUpdate();
+
+    void Render();
 private:
     //Instance 
     static GameManager* sInstance;
@@ -38,21 +48,11 @@ private:
     //Different events
     SDL_Event mEvents;
 
-    //! Example code below
-
-    Texture* mPlayer;
-    Texture* mText;
-    Texture* mExplainText;
-    Button* mButton;
+    std::vector<GameEntity*> mEntityRender;
+    std::vector<GameEntity*> mEntityUpdate;
 
     //Construct and destruct
 
     GameManager();
     ~GameManager();
-
-    void EarlyUpdate();
-    void Update();
-    void LateUpdate();
-
-    void Render();
 };

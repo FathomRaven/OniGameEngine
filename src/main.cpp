@@ -66,9 +66,32 @@ int main(int argc, char ** argv){
 
     //Make a gamemanager instance
     GameManager* game = GameManager::Instance();
+    
+    Texture* testText = new Texture("Simpleplayer.png");
+    testText->Pos(Vector2(300.0f, 300.0f));
+
+    Button* mButton = new Button("BoxCollider.png", "Press me", "test.ttf", 16, {0, 0, 0, 255}, true);
+    mButton->Pos(Vector2(Graphics::Instance()->SCREEN_WIDTH/2, 800.0f));
+
+    game->AddToRenders(testText);
+    game->AddToRenders(mButton);
+
+    game->AddToUpdates(mButton);
 
     //Run the game loop
-    game->Run();
+    while (!game->Run())
+    {
+        if(game->FrameLimit())
+        {
+            game->EarlyUpdate();
+            game->Update();
+
+
+            game->LateUpdate();
+
+            game->Render();
+        }
+    }
 
     //Clean up gameManager
     GameManager::Release();
