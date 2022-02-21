@@ -18,7 +18,7 @@ void GameManager::Release()
     sInstance = nullptr;
 }
 
-//Constructer and destructor
+//Constructor and destructor
 
 GameManager::GameManager()
 {
@@ -51,8 +51,8 @@ GameManager::GameManager()
     */
     //Create player texture, from simpleplayer image
     //Then scale and position it 
-    mPlayer = new Texture("Simpleplayer.png");
-    mPlayer->Scale(Vector2(0.5f, 0.5f));
+    mPlayer = new AnimatedTexture("walkingbase-Sheet.png", 0, 0, 16, 16, 4, 0.4, AnimatedTexture::ANIM_DIR::horizontal);
+    mPlayer->Scale(Vector2(5.0f, 5.0f));
     mPlayer->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, mGraphics->SCREEN_HEIGHT/2));
     //Create text, from test.ttf font file
     mText = new Texture("Hello World!", "test.ttf", 32, {0, 0, 0, 255});
@@ -122,16 +122,29 @@ void GameManager::Update()
     mCursor->Update();
     //Move player if arrow keys are down
     if(mInputMgr->KeyDown(SDL_SCANCODE_LEFT))
+    {
         mPlayer->Translate((VEC2_LEFT * mTimer->DeltaTime()) * 200.0f);
+        mPlayer->Update();
+    }
     if(mInputMgr->KeyDown(SDL_SCANCODE_RIGHT))
+    {
         mPlayer->Translate((VEC2_RIGHT * mTimer->DeltaTime()) * 200.0f);
+        mPlayer->Update();
+    }
     if(mInputMgr->KeyDown(SDL_SCANCODE_DOWN))
+    {
         mPlayer->Translate((VEC2_DOWN * mTimer->DeltaTime()) * 200.0f);
+        mPlayer->Update();
+    }
     if(mInputMgr->KeyDown(SDL_SCANCODE_UP))
+    {
         mPlayer->Translate((VEC2_UP * mTimer->DeltaTime()) * 200.0f);
+        mPlayer->Update();
+    }
     
     if(mInputMgr->KeyPressed(SDL_SCANCODE_D))
         mAudioMgr->PlaySFX("boom.wav");
+    
 
     mButton->Update();
 

@@ -47,17 +47,15 @@ This all works best with VSCode bettercomments extension
 
 //Docs
 
-//! Add in a way for individual colliders to detect what layer they are colliding with
 //! Occasional odd collision
     //? More info needed
+//AnimatorState
+//Random class
 //Improve comments
     /*
     Some poor wording throughout
     Add in param info
     Spell checking
-    
-    Still need to comment:
-    Cursor
     */
 //// Particle engine
 //// Camera zooming

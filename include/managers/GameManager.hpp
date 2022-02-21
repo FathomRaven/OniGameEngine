@@ -40,7 +40,7 @@ private:
 
     //! Example code below
 
-    Texture* mPlayer;
+    AnimatedTexture* mPlayer;
     Texture* mText;
     Texture* mExplainText;
     Button* mButton;

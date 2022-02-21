@@ -3,7 +3,7 @@
 AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, ANIM_DIR animationDir)
     :Texture(filename, x, y, w, h)
 {
-    mTimer = Timer::Instance(); //Sets timer instance
+    mTimer = Timer::Instance();
     
     //Sets variables to match parameters
     
@@ -31,7 +31,6 @@ void AnimatedTexture::WrapMode(WRAP_MODE mode)
 {
     mWrapMode = mode;
 }
-//The big boy
 
 void AnimatedTexture::Update()
 {

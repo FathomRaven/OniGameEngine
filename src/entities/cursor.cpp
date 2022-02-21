@@ -32,9 +32,8 @@ Cursor::~Cursor()
 
 void Cursor::Update()
 {
+    //Constantly put the cursor at the mouse position
     Pos(mInput->MousePos());
-    // printf("My Pos: %f\n", Pos().x);
-    // printf("Mouse Pos: %f\n", mInput->MousePos().x);
 }
 
 void Cursor::Render()

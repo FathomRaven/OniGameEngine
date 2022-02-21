@@ -15,7 +15,7 @@ void InputManager::Release()
     delete sInstance;
     sInstance = nullptr;
 }
-//Constructer and destructor
+//Constructor and destructor
 InputManager::InputManager()
 {
     mKeyboardState = SDL_GetKeyboardState(&mKeyLength);
