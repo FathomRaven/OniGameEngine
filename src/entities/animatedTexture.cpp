@@ -1,5 +1,7 @@
 #include "AnimatedTexture.hpp"
 
+using namespace oni;
+
 AnimatedTexture::AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, ANIM_DIR animationDir)
     :Texture(filename, x, y, w, h)
 {

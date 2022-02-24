@@ -1,5 +1,7 @@
 #include "BoxCollider.hpp"
 
+using namespace oni;
+
 BoxCollider::BoxCollider(Vector2 size)
     : Collider(ColliderType::Box)
 {

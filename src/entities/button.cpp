@@ -1,5 +1,7 @@
 #include "Button.hpp"
 
+using namespace oni;
+
 Button::Button(std::string filename, bool _oneClick)
 {
     mCursor = Cursor::Instance();

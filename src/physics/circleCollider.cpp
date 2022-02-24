@@ -1,5 +1,7 @@
 #include "CircleCollider.hpp"
 
+using namespace oni;
+
 CircleCollider::CircleCollider(float radius, bool broadPhase)
     : Collider(ColliderType::Circle)
 {

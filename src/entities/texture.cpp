@@ -1,5 +1,7 @@
 #include "Texture.hpp"
-//Texture construct
+
+using namespace oni;
+
 Texture::Texture(std::string filename)
 {
     //Get graphics instance

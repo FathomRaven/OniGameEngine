@@ -2,6 +2,9 @@
 Game entity class, from which all textures are from
 */
 #include "GameEntity.hpp"
+
+using namespace oni;
+
 //Constructor and destructor
 GameEntity::GameEntity(float x, float y)
 {

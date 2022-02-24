@@ -1,4 +1,7 @@
 #include "InputManager.hpp"
+
+using namespace oni;
+
 //Singleton instance
 InputManager* InputManager::sInstance = nullptr;
 

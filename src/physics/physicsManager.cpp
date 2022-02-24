@@ -1,5 +1,7 @@
 #include "PhysicsManager.hpp"
 
+using namespace oni;
+
 PhysicsManager* PhysicsManager::instanceM = nullptr;
 
 PhysicsManager* PhysicsManager::Instance()

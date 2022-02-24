@@ -1,4 +1,7 @@
 #include "CameraManager.hpp"
+
+using namespace oni;
+
 //Basic Singleton stuff
 CameraManager* CameraManager::InstanceM = nullptr;
 

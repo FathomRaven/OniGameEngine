@@ -1,5 +1,7 @@
 #include "Camera.hpp"
 
+using namespace oni;
+
 Camera::Camera(Vector2 _pos)
     :GameEntity()
 {    

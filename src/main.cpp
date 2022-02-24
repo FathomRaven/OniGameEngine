@@ -1,4 +1,6 @@
 #include "GameManager.hpp"
+
+using namespace oni;
 /*
 # -------------------
 #   Oni Game Engine 

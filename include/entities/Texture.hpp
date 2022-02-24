@@ -6,30 +6,33 @@ Texture class, come from gameEntity
 #include "AssetManager.hpp"
 #include "CameraManager.hpp"
 
-class Texture : public GameEntity
+namespace oni
 {
+    class Texture : public GameEntity
+    {
 
-public:
-    //Construct, construct overflow, and destruct
-    Texture(std::string filename);
-    Texture(std::string filename, int x, int y, int w, int h);
-    Texture(std::string text, std::string fontpath, int size, SDL_Color color);
-    ~Texture();
-    //Render
-    virtual void Render();
+    public:
+        //Construct, construct overflow, and destruct
+        Texture(std::string filename);
+        Texture(std::string filename, int x, int y, int w, int h);
+        Texture(std::string text, std::string fontpath, int size, SDL_Color color);
+        ~Texture();
+        //Render
+        virtual void Render();
 
-    Vector2 ScaledDimensions();
+        Vector2 ScaledDimensions();
 
-protected:
-    //Texture
-    SDL_Texture* mTex;
-    //Graphics instance
-    Graphics* mGraphics;
-    CameraManager* cameraMgr;
-    //Width and height
-    int mWidth, mHeight;
-    //Clipping info
-    bool mClipped;
-    SDL_Rect mRenderRect;
-    SDL_Rect mClipRect;    
-};
+    protected:
+        //Texture
+        SDL_Texture* mTex;
+        //Graphics instance
+        Graphics* mGraphics;
+        CameraManager* cameraMgr;
+        //Width and height
+        int mWidth, mHeight;
+        //Clipping info
+        bool mClipped;
+        SDL_Rect mRenderRect;
+        SDL_Rect mClipRect;    
+    };
+}

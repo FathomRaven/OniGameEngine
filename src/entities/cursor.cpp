@@ -1,5 +1,7 @@
 #include "Cursor.hpp"
 
+using namespace oni;
+
 Cursor* Cursor::InstanceM = nullptr;
 
 Cursor* Cursor::Instance()

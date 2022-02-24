@@ -1,6 +1,8 @@
 #pragma once
 #include "AssetManager.hpp"
 
+namespace oni
+{
 class AudioManager 
 {
 public:
@@ -33,3 +35,4 @@ private:
     AudioManager();
     ~AudioManager();
 };
+}

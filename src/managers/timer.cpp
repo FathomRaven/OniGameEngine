@@ -1,4 +1,7 @@
 #include "Timer.hpp"
+
+using namespace oni;
+
 //Basic singleton
 Timer* Timer::sInstance = nullptr;
 
@@ -14,7 +17,7 @@ void Timer::Release()
     delete sInstance;
     sInstance = nullptr;
 }
-//Constucter and destructor
+//Constructor and destructor
 Timer::Timer()
 {
     Reset();

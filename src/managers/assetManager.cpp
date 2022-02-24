@@ -1,4 +1,5 @@
 #include "AssetManager.hpp"
+using namespace oni;
 
 //Basic singleton stuff
 

@@ -1,4 +1,5 @@
 #include "GameManager.hpp"
+using namespace oni;
 
 //Basic singleton instance stuff
 

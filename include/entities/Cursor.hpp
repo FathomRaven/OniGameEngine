@@ -12,9 +12,11 @@ Nothing special here
 #include "PhysicsManager.hpp"
 #include "BoxCollider.hpp"
 
-class Cursor : public PhysEntity
-{    
-public:
+namespace oni
+{
+    class Cursor : public PhysEntity
+    {    
+    public:
     static Cursor* Instance();
     static void Release();
 
@@ -23,8 +25,9 @@ public:
 
     void Update();
     void Render();
-private:
+    private:
     static Cursor* InstanceM;
 
     InputManager* mInput;
-};
+    };
+}

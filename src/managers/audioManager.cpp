@@ -1,5 +1,7 @@
 #include "AudioManager.hpp"
 
+using namespace oni;
+
 AudioManager* AudioManager::sInstance = nullptr;
 
 AudioManager* AudioManager::Instance()

@@ -1,5 +1,7 @@
 #include "Graphics.hpp"
 
+using namespace oni;
+
 //Basic singleton instance
 
 Graphics* Graphics::sInstance = nullptr;

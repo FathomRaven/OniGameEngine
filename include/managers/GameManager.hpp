@@ -7,52 +7,55 @@ GameManager singleton class. Handles most the main game loop
 #include "AnimatedTexture.hpp"
 #include "Button.hpp"
 
-class GameManager{
-public:    
-    //Instance stuff
-    
-    static GameManager* Instance();
-    static void Release();
-    //Run loop
-    void Run();
+namespace oni{
 
-private:
-    //Instance 
-    static GameManager* sInstance;
-    //The framerate to keep the game at
-    const int FRAME_RATE = 60;
-    //If quit yet
-    bool mQuit;
-    //Various Managers
-    Graphics* mGraphics;
-    AssetManager* mAssetMgr;
-    InputManager* mInputMgr;
-    AudioManager* mAudioMgr;
-    CameraManager* cameraMgr;
-    PhysicsManager* physMgr;
-    //Timer
-    Timer* mTimer;
-    
-    Cursor* mCursor;
+    class GameManager{
+    public:    
+        //Instance stuff
+        
+        static GameManager* Instance();
+        static void Release();
+        //Run loop
+        void Run();
 
-    //Different events
-    SDL_Event mEvents;
+    private:
+        //Instance 
+        static GameManager* sInstance;
+        //The framerate to keep the game at
+        const int FRAME_RATE = 60;
+        //If quit yet
+        bool mQuit;
+        //Various Managers
+        Graphics* mGraphics;
+        AssetManager* mAssetMgr;
+        InputManager* mInputMgr;
+        AudioManager* mAudioMgr;
+        CameraManager* cameraMgr;
+        PhysicsManager* physMgr;
+        //Timer
+        Timer* mTimer;
+        
+        Cursor* mCursor;
 
-    //! Example code below
+        //Different events
+        SDL_Event mEvents;
 
-    AnimatedTexture* mPlayer;
-    Texture* mText;
-    Texture* mExplainText;
-    Button* mButton;
+        //! Example code below
 
-    //Construct and destruct
+        AnimatedTexture* mPlayer;
+        Texture* mText;
+        Texture* mExplainText;
+        Button* mButton;
 
-    GameManager();
-    ~GameManager();
+        //Construct and destruct
 
-    void EarlyUpdate();
-    void Update();
-    void LateUpdate();
+        GameManager();
+        ~GameManager();
 
-    void Render();
-};
+        void EarlyUpdate();
+        void Update();
+        void LateUpdate();
+
+        void Render();
+    };  
+}

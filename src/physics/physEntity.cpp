@@ -2,6 +2,8 @@
 #include "PhysicsHelper.hpp"
 #include "PhysicsManager.hpp"
 
+using namespace oni;
+
 PhysEntity::PhysEntity()
 {
     mBroadPhaseCollider = nullptr;

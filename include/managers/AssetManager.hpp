@@ -7,6 +7,8 @@ Contains textures, textures made from text, and fonts
 #include <SDL2/SDL_mixer.h>
 #include <map>
 
+namespace oni
+{
 //AssetManager class, singleton
 class AssetManager {
 
@@ -40,4 +42,6 @@ private:
     AssetManager();
     ~AssetManager();
 
-};
+};   
+}
+

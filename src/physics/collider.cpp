@@ -1,5 +1,7 @@
 #include "Collider.hpp"
 
+using namespace oni;
+
 Collider::Collider(ColliderType type)
     :mType(type)
 {
