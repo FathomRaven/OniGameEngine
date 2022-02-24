@@ -65,10 +65,35 @@ This all works best with VSCode bettercomments extension
 int main(int argc, char ** argv){
 
     //Make a gamemanager instance
-    GameManager* game = GameManager::Instance("Example of Oni Engine", 1024, 896, {0, 0, 0, 255});
+    GameManager* game = GameManager::Instance("Example of Oni Engine", 1024, 896, {255, 255, 255, 255});
+
+    Texture* mPlayer;
+    mPlayer = new Texture("Simpleplayer.png");
+    mPlayer->Pos(Vector2(500.0f, 500.0f));
+
+    game->AddToRenders(mPlayer);
 
     //Run the game loop
-    game->Run();
+    while (!game->Run())
+    {
+        if(game->FrameLimit())
+        {
+            game->EarlyUpdate();
+            game->Update();
+
+            if(InputManager::Instance()->KeyDown(SDL_SCANCODE_DOWN))
+                mPlayer->Translate(VEC2_DOWN*5.0f);
+            if(InputManager::Instance()->KeyDown(SDL_SCANCODE_LEFT))
+                mPlayer->Translate(VEC2_LEFT*5.0f);
+            if(InputManager::Instance()->KeyDown(SDL_SCANCODE_RIGHT))
+                mPlayer->Translate(VEC2_RIGHT*5.0f);
+            if(InputManager::Instance()->KeyDown(SDL_SCANCODE_UP))
+                mPlayer->Translate(VEC2_UP*5.0f);
+
+            game->LateUpdate();
+            game->Render();
+        }
+    }
 
     //Clean up gameManager
     GameManager::Release();

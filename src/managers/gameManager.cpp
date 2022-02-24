@@ -45,28 +45,7 @@ GameManager::GameManager(std::string winTitle, int winWidth, int winHeight, SDL_
 
     mCursor->Parent(cameraMgr->activeCamera);
 
-    physMgr->SetLayerCollisionMask(PhysicsManager::CollisionLayers::UI, PhysicsManager::CollisionFlags::Mouse);
-
-    /*
-    Example code
-    */
-    //Create player texture, from simpleplayer image
-    //Then scale and position it 
-    mPlayer = new AnimatedTexture("walkingbase-Sheet.png", 0, 0, 16, 16, 4, 0.4, AnimatedTexture::ANIM_DIR::horizontal);
-    mPlayer->Scale(Vector2(5.0f, 5.0f));
-    mPlayer->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, mGraphics->SCREEN_HEIGHT/2));
-    //Create text, from test.ttf font file
-    mText = new Texture("Hello World!", "test.ttf", 32, {0, 0, 0, 255});
-    mText->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, 600.0f));
-    
-    mExplainText = new Texture("Use arrow keys to move around, hit 'D' for a cool sound", "test.ttf", 32, {0, 0, 0, 255});
-    mExplainText->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, 100.0f));
-    //Create a button that will only be clicked once, with the text of "Press me"
-    mButton = new Button("BoxCollider.png", "Press me", "test.ttf", 16, {0, 0, 0, 255}, true);
-    mButton->Pos(Vector2(mGraphics->SCREEN_WIDTH/2, 800.0f));
-    //Parent button to camera, and parent camera to player
-    mButton->Parent(cameraMgr->activeCamera);
-    cameraMgr->activeCamera->Parent(mPlayer);
+    physMgr->SetLayerCollisionMask(PhysicsManager::CollisionLayers::UI, PhysicsManager::CollisionFlags::Mouse);;
 }
 
 GameManager::~GameManager()
@@ -96,16 +75,17 @@ GameManager::~GameManager()
     Cursor::Release();
     mCursor = nullptr;
 
-    //Example Code
-    
-    delete mPlayer;
-    mPlayer = nullptr;
-    delete mButton;
-    mButton = nullptr;
-    delete mText;
-    mText = nullptr;
-    delete mExplainText;
-    mExplainText = nullptr;
+    for (int i = 0; i < (int)mEntityRender.size(); i++)
+    {
+        delete mEntityRender[i];
+        mEntityRender[i] = nullptr;
+    }
+
+    for (int i = 0; i < (int)mEntityUpdate.size(); i++)
+    {
+        delete mEntityUpdate[i];
+        mEntityUpdate[i] = nullptr;
+    }
 }
 
 void GameManager::EarlyUpdate()
@@ -118,40 +98,12 @@ void GameManager::Update()
 {
     //Update objects in here
 
-    //Example Code
-
     mCursor->Update();
-    //Move player if arrow keys are down
-    if(mInputMgr->KeyDown(SDL_SCANCODE_LEFT))
-    {
-        mPlayer->Translate((VEC2_LEFT * mTimer->DeltaTime()) * 200.0f);
-        mPlayer->Update();
-    }
-    if(mInputMgr->KeyDown(SDL_SCANCODE_RIGHT))
-    {
-        mPlayer->Translate((VEC2_RIGHT * mTimer->DeltaTime()) * 200.0f);
-        mPlayer->Update();
-    }
-    if(mInputMgr->KeyDown(SDL_SCANCODE_DOWN))
-    {
-        mPlayer->Translate((VEC2_DOWN * mTimer->DeltaTime()) * 200.0f);
-        mPlayer->Update();
-    }
-    if(mInputMgr->KeyDown(SDL_SCANCODE_UP))
-    {
-        mPlayer->Translate((VEC2_UP * mTimer->DeltaTime()) * 200.0f);
-        mPlayer->Update();
-    }
-    
-    if(mInputMgr->KeyPressed(SDL_SCANCODE_D))
-        mAudioMgr->PlaySFX("boom.wav");
-    
 
-    mButton->Update();
-
-    if(mButton->Clicked())
-        mText->Rotate(1.0f);
-
+    for (int i = 0; i < (int)mEntityUpdate.size(); i++)
+    {
+        mEntityUpdate[i]->Update();
+    }
 }
 
 void GameManager::Render()
@@ -160,15 +112,11 @@ void GameManager::Render()
 
     //Render things in here
 
-    //Example Code
-    mPlayer->Render();
-    if(mButton->Clicked())
-        mText->Render();
+    for (int i = 0; i < (int)mEntityRender.size(); i++)
+    {
+        mEntityRender[i]->Render();
+    }
     
-    mButton->Render();
-    mExplainText->Render();
-    mPlayer->Render();
-
     mGraphics->Render();
 }
 
@@ -178,35 +126,40 @@ void GameManager::LateUpdate()
     mInputMgr->UpdatePrevInput();
 }
 
+void GameManager::AddToUpdates(GameEntity* entity)
+{
+    mEntityUpdate.push_back(entity);
+}
+
+void GameManager::AddToRenders(GameEntity* entity)
+{
+    mEntityRender.push_back(entity);
+}
+
+bool GameManager::FrameLimit()
+{
+    return mTimer->DeltaTime() >= (1.0f / FRAME_RATE);
+}
+
 //Run the main game loop. This is the big guy
 
-void GameManager::Run()
+bool GameManager::Run()
 {   
+    mQuit = false;
     //Loop runs as long as the game isn't quit
-    while (!mQuit)
+
+    //Update the timer
+    mTimer->Update();
+
+    //As long as there are SDL events, keep running this
+    while (SDL_PollEvent(&mEvents) != 0)
     {
-        //Update the timer
-        mTimer->Update();
-
-        //As long as there are SDL events, keep running this
-        while (SDL_PollEvent(&mEvents) != 0)
+        //If close button was hit on window, quit the application
+        if (mEvents.type == SDL_QUIT)
         {
-            //If close button was hit on window, quit the application
-            if (mEvents.type == SDL_QUIT)
-            {
-                mQuit = true;
-            }
-            
+            mQuit = true;
         }
-        //Loop if the deltaTime is at the right rate
-        if(mTimer->DeltaTime() >= (1.0f / FRAME_RATE))
-        {
-            // printf("DeltaTime: %F\n", mTimer->DeltaTime());
-
-            EarlyUpdate();
-            Update();
-            LateUpdate();
-            Render();
-        }
+        
     }
+    return mQuit;
 }

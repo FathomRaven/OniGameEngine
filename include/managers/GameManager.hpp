@@ -7,8 +7,8 @@ GameManager singleton class. Handles most the main game loop
 #include "AnimatedTexture.hpp"
 #include "Button.hpp"
 
-namespace oni{
-
+namespace oni
+{
     class GameManager{
     public:    
         //Instance stuff
@@ -16,8 +16,18 @@ namespace oni{
         static GameManager* Instance(std::string winTitle = "Oni Engine", int winWidth = 1024, int winHeight = 1024, SDL_Color winColor = {255, 255, 255, 255});
         static void Release();
         //Run loop
-        void Run();
+        bool Run();
 
+        bool FrameLimit();
+        
+        void AddToRenders(GameEntity* entity);
+        void AddToUpdates(GameEntity* entity);
+
+        void EarlyUpdate();
+        void Update();
+        void LateUpdate();
+
+        void Render();
     private:
         //Instance 
         static GameManager* sInstance;
@@ -37,25 +47,17 @@ namespace oni{
         
         Cursor* mCursor;
 
-        //Different events
         SDL_Event mEvents;
 
-        //! Example code below
+        std::vector<GameEntity*> mEntityRender;
+        std::vector<GameEntity*> mEntityUpdate;
 
         AnimatedTexture* mPlayer;
         Texture* mText;
         Texture* mExplainText;
         Button* mButton;
 
-        //Construct and destruct
-
-        GameManager(std::string winTitle, int winWidth, int winHeight, SDL_Color winColor = {255, 255, 255, 255});
+        GameManager(std::string winTitle, int winWidth, int winHeight, SDL_Color winColor);
         ~GameManager();
-
-        void EarlyUpdate();
-        void Update();
-        void LateUpdate();
-
-        void Render();
-    };  
-}
+    };
+};
