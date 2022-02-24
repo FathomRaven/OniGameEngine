@@ -13,7 +13,7 @@ namespace oni{
     public:    
         //Instance stuff
         
-        static GameManager* Instance();
+        static GameManager* Instance(std::string winTitle = "Oni Engine", int winWidth = 1024, int winHeight = 1024, SDL_Color winColor = {255, 255, 255, 255});
         static void Release();
         //Run loop
         void Run();
@@ -49,7 +49,7 @@ namespace oni{
 
         //Construct and destruct
 
-        GameManager();
+        GameManager(std::string winTitle, int winWidth, int winHeight, SDL_Color winColor = {255, 255, 255, 255});
         ~GameManager();
 
         void EarlyUpdate();

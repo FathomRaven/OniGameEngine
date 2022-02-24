@@ -5,10 +5,10 @@ using namespace oni;
 
 GameManager* GameManager::sInstance = nullptr;
 
-GameManager* GameManager::Instance()
+GameManager* GameManager::Instance(std::string winTitle, int winWidth, int winHeight, SDL_Color winColor)
 {
     if (sInstance == nullptr)
-    sInstance = new GameManager();
+        sInstance = new GameManager(winTitle, winWidth, winHeight, winColor);
     
     return sInstance;
 }
@@ -21,13 +21,13 @@ void GameManager::Release()
 
 //Constructor and destructor
 
-GameManager::GameManager()
+GameManager::GameManager(std::string winTitle, int winWidth, int winHeight, SDL_Color winColor)
 {
     //Declare that the game is not quit yet
     mQuit = false;
 
     //Create graphics instance and check if it's created
-    mGraphics = Graphics::Instance();
+    mGraphics = Graphics::Instance(winTitle, winWidth, winHeight, winColor);
 
     if(!Graphics::Initialized())
         mQuit = true;

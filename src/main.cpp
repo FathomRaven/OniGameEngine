@@ -65,7 +65,7 @@ This all works best with VSCode bettercomments extension
 int main(int argc, char ** argv){
 
     //Make a gamemanager instance
-    GameManager* game = GameManager::Instance();
+    GameManager* game = GameManager::Instance("Example of Oni Engine", 1024, 896, {0, 0, 0, 255});
 
     //Run the game loop
     game->Run();

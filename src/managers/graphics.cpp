@@ -7,10 +7,10 @@ using namespace oni;
 Graphics* Graphics::sInstance = nullptr;
 bool Graphics::sInitalized = false;
 
-Graphics* Graphics::Instance()
+Graphics* Graphics::Instance(std::string winTitle, int winWidth, int winHeight, SDL_Color winColor)
 {
     if (sInstance == nullptr)
-        sInstance = new Graphics();
+        sInstance = new Graphics(winTitle, winWidth, winHeight, winColor);
     
     return sInstance;
 }
@@ -30,9 +30,15 @@ bool Graphics::Initialized()
 
 //Constructor and destructor
 
-Graphics::Graphics()
+Graphics::Graphics(std::string winTitle, int winWidth, int winHeight, SDL_Color winColor)
 {
     mBackBuffer = nullptr;
+
+    WINDOW_TITLE = winTitle;
+    SCREEN_WIDTH = winWidth;
+    SCREEN_HEIGHT = winHeight;
+
+    refreshColor = winColor;
 
     sInitalized = Init();
 }
@@ -67,7 +73,7 @@ bool Graphics::Init()
         printf("TTF");
     }
     //Create window and throw error if failed
-    mWindow = SDL_CreateWindow(WINDOW_TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    mWindow = SDL_CreateWindow(WINDOW_TITLE.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
     if(mWindow == nullptr)
     {
@@ -82,7 +88,7 @@ bool Graphics::Init()
         return false;
     }
     //Set draw color
-    SDL_SetRenderDrawColor(mRenderer, 0xFF, 0xFF, 0xff, 0xff);
+    SDL_SetRenderDrawColor(mRenderer, refreshColor.r, refreshColor.g, refreshColor.b, 0xff);
     //Init SDL_image
     int flags = IMG_INIT_PNG;
     if(!(IMG_Init(flags) & flags))
