@@ -65,7 +65,7 @@ This all works best with VSCode bettercomments extension
 int main(int argc, char ** argv){
 
     //Make a gamemanager instance
-    GameManager* game = GameManager::Instance("Example of Oni Engine", 1024, 896, {255, 255, 255, 255});
+    GameManager* game = GameManager::Instance();
 
     Texture* mPlayer;
     mPlayer = new Texture("Simpleplayer.png");

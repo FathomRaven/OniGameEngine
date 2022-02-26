@@ -48,9 +48,7 @@ namespace oni
         int GetEntityLayer(unsigned long id);
 
         void Update();
-
     private:
-
         static PhysicsManager* instanceM;
         std::vector<PhysEntity*> mCollisionLayers[static_cast<unsigned int>(CollisionLayers::MaxLayers)];
         std::bitset<static_cast<unsigned int>(CollisionLayers::MaxLayers)> mLayerMasks[static_cast<unsigned int>(CollisionLayers::MaxLayers)];

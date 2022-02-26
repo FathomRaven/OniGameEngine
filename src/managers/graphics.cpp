@@ -7,10 +7,10 @@ using namespace oni;
 Graphics* Graphics::sInstance = nullptr;
 bool Graphics::sInitalized = false;
 
-Graphics* Graphics::Instance(std::string winTitle, int winWidth, int winHeight, SDL_Color winColor)
+Graphics* Graphics::Instance()
 {
     if (sInstance == nullptr)
-        sInstance = new Graphics(winTitle, winWidth, winHeight, winColor);
+        sInstance = new Graphics();
     
     return sInstance;
 }
@@ -30,15 +30,9 @@ bool Graphics::Initialized()
 
 //Constructor and destructor
 
-Graphics::Graphics(std::string winTitle, int winWidth, int winHeight, SDL_Color winColor)
+Graphics::Graphics()
 {
     mBackBuffer = nullptr;
-
-    WINDOW_TITLE = winTitle;
-    SCREEN_WIDTH = winWidth;
-    SCREEN_HEIGHT = winHeight;
-
-    refreshColor = winColor;
 
     sInitalized = Init();
 }

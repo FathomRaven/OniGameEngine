@@ -14,15 +14,15 @@ namespace oni
     {
     public:
         //Width of the window
-        int SCREEN_WIDTH;
+        int SCREEN_WIDTH = 1024;
         //Height of the window
-        int SCREEN_HEIGHT;
+        int SCREEN_HEIGHT = 896;
         //Title of the windows
-        std::string WINDOW_TITLE;
+        std::string WINDOW_TITLE = "Testing";
 
-        SDL_Color refreshColor;
+        SDL_Color refreshColor = {255, 255, 255, 255};
         //Instance functions
-        static Graphics* Instance(std::string winTitle = "Test", int winWidth = 1024, int winHeight = 1024, SDL_Color winColor = {255, 255, 255, 255});
+        static Graphics* Instance();
         static void Release();
         static bool Initialized();
         //Load texture, and create texture from text
@@ -45,7 +45,7 @@ namespace oni
         //Renderer
     
         //Construct and destruct
-        Graphics(std::string winTitle, int winWidth, int winHeight, SDL_Color winColor);
+        Graphics();
         ~Graphics();
         //Init function
         bool Init();  
