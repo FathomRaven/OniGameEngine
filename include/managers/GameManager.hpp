@@ -52,11 +52,6 @@ namespace oni
         std::vector<GameEntity*> mEntityRender;
         std::vector<GameEntity*> mEntityUpdate;
 
-        AnimatedTexture* mPlayer;
-        Texture* mText;
-        Texture* mExplainText;
-        Button* mButton;
-
         GameManager();
         ~GameManager();
     };

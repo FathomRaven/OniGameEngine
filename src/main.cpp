@@ -64,6 +64,7 @@ This all works best with VSCode bettercomments extension
 
 int main(int argc, char ** argv){
 
+    
     //Make a gamemanager instance
     GameManager* game = GameManager::Instance();
 

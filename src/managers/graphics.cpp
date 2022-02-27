@@ -34,6 +34,11 @@ Graphics::Graphics()
 {
     mBackBuffer = nullptr;
 
+    WINDOW_TITLE = Settings::Instance()->winTitle;
+    SCREEN_WIDTH = Settings::Instance()->winWidth;
+    SCREEN_HEIGHT = Settings::Instance()->winHeight;
+    REFRESHCOLOR = Settings::Instance()->winRefreshColor;
+
     sInitalized = Init();
 }
 
@@ -82,7 +87,7 @@ bool Graphics::Init()
         return false;
     }
     //Set draw color
-    SDL_SetRenderDrawColor(mRenderer, refreshColor.r, refreshColor.g, refreshColor.b, 0xff);
+    SDL_SetRenderDrawColor(mRenderer, REFRESHCOLOR.r, REFRESHCOLOR.g, REFRESHCOLOR.b, REFRESHCOLOR.a);
     //Init SDL_image
     int flags = IMG_INIT_PNG;
     if(!(IMG_Init(flags) & flags))

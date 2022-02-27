@@ -7,6 +7,7 @@ Graphics, contains window and renderer info
 #include <SDL2/SDL_ttf.h>
 #include <stdio.h>
 #include <string>
+#include "Settings.hpp"
 
 namespace oni
 {
@@ -14,13 +15,13 @@ namespace oni
     {
     public:
         //Width of the window
-        int SCREEN_WIDTH = 1024;
+        int SCREEN_WIDTH;
         //Height of the window
-        int SCREEN_HEIGHT = 896;
+        int SCREEN_HEIGHT;
         //Title of the windows
-        std::string WINDOW_TITLE = "Testing";
+        std::string WINDOW_TITLE;
 
-        SDL_Color refreshColor = {255, 255, 255, 255};
+        SDL_Color REFRESHCOLOR = {255, 255, 255, 255};
         //Instance functions
         static Graphics* Instance();
         static void Release();
@@ -35,7 +36,8 @@ namespace oni
         //Present screen
         void Render();
         SDL_Renderer* mRenderer;
-    private:
+    private:        
+        
         //Instance variables
         static Graphics* sInstance;
         static bool sInitalized;
