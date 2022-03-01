@@ -37,6 +37,8 @@ private:
     std::map<std::string, Mix_Music*> mMusic;
     std::map<std::string, Mix_Chunk*> mSFX;
 
+    std::string basePath;
+
     //-----
     //Construct and destruct
     AssetManager();

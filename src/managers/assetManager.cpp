@@ -23,6 +23,17 @@ void AssetManager::Release()
 
 AssetManager::AssetManager()
 {
+    //Gets path to exe, checks if it's null
+    const char* fullPathPointer = SDL_GetBasePath();
+
+    if (fullPathPointer == nullptr)
+    {
+        printf("Failed to get path to exe: %s\n", SDL_GetError());
+    }
+    //Creates fullpath out of fullPathPointer and gives it the filename, and assets info
+    basePath = fullPathPointer;
+    delete fullPathPointer;
+    fullPathPointer = nullptr;
 }
 //Clears the texture map, makes sure to destroy all textures
 AssetManager::~AssetManager()
@@ -81,18 +92,8 @@ AssetManager::~AssetManager()
 //Get texture info
 SDL_Texture* AssetManager::GetTexture(std::string filename)
 {
-    //Gets path to exe, checks if it's null
-    const char* fullPathPointer = SDL_GetBasePath();
 
-    if (fullPathPointer == nullptr)
-    {
-        printf("Failed to get path to exe: %s\n", SDL_GetError());
-    }
-    //Creates fullpath out of fullPathPointer and gives it the filename, and assets info
-    std::string fullPath(fullPathPointer);
-    delete fullPathPointer;
-    fullPathPointer = nullptr;
-    fullPath.append("assets/" + filename);
+    std::string fullPath = basePath + "assets/" + filename;
     //Checks if texture exists, creates it if not
     if(mTextures[fullPath] == nullptr)
     {
@@ -107,18 +108,7 @@ SDL_Texture* AssetManager::GetTexture(std::string filename)
 
 TTF_Font* AssetManager::GetFont(std::string filename, int size)
 {
-    //Gets path to exe, checks if it's null
-    const char* fullPathPointer = SDL_GetBasePath();
-
-    if (fullPathPointer == nullptr)
-    {
-        printf("Failed to get path to exe: %s\n", SDL_GetError());
-    }
-    //Creates fullpath out of fullPathPointer and gives it the filename, and assets info
-    std::string fullPath(fullPathPointer);
-    delete fullPathPointer;
-    fullPathPointer = nullptr;
-    fullPath.append("assets/" + filename);
+    std::string fullPath = basePath + "assets/" + filename;
 
     std::string key = fullPath + (char)size;
     //Check if font exists, create it if not
@@ -150,18 +140,7 @@ SDL_Texture* AssetManager::GetText(std::string text, std::string filename, int s
 
 Mix_Music* AssetManager::GetMusic(std::string filename)
 {
-    //Gets path to exe, checks if it's null
-    const char* fullPathPointer = SDL_GetBasePath();
-
-    if (fullPathPointer == nullptr)
-    {
-        printf("Failed to get path to exe: %s\n", SDL_GetError());
-    }
-    //Creates fullpath out of fullPathPointer and gives it the filename, and assets info
-    std::string fullPath(fullPathPointer);
-    delete fullPathPointer;
-    fullPathPointer = nullptr;
-    fullPath.append("assets/" + filename);
+    std::string fullPath = basePath + "assets/" + filename;
 
     if(mMusic[fullPath] == nullptr)
     {
@@ -175,18 +154,8 @@ Mix_Music* AssetManager::GetMusic(std::string filename)
 
 Mix_Chunk* AssetManager::GetSFX(std::string filename)
 {
-    //Gets path to exe, checks if it's null
-    const char* fullPathPointer = SDL_GetBasePath();
-
-    if (fullPathPointer == nullptr)
-    {
-        printf("Failed to get path to exe: %s\n", SDL_GetError());
-    }
-    //Creates fullpath out of fullPathPointer and gives it the filename, and assets info
-    std::string fullPath(fullPathPointer);
-    delete fullPathPointer;
-    fullPathPointer = nullptr;
-    fullPath.append("assets\\" + filename);
+    std::string fullPath = basePath + "assets/" + filename;
+    
     if(mSFX[fullPath] == nullptr)
     {
         mSFX[fullPath] = Mix_LoadWAV(fullPath.c_str());
