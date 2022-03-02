@@ -1,6 +1,5 @@
 #pragma once
 
-#include <toml.hpp>
 #include <string>
 #include <SDL2/SDL_image.h>
 
@@ -16,6 +15,8 @@ namespace oni
         std::string winTitle;
         int winWidth, winHeight;
         SDL_Color winRefreshColor;
+        
+        bool debugColliders;
     private:
         static Settings* instanceS;
         

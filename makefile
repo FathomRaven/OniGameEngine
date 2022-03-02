@@ -4,7 +4,6 @@ prms = -O0 -Wall -Wextra -g -m64
 SUBDIR = entities managers physics
 SRCS = $(foreach fd, $(SUBDIR), src/$(fd)/*.cpp) src/*.cpp
 INCS = -I./include/ $(foreach fd, $(SUBDIR), -I./include/$(fd)/)
-LIBRARIES = -IC:/msys64/mingw64/include/toml11
 OUTDIR = ./bin/debug/main.exe
 
 CC = clang++
@@ -12,7 +11,7 @@ CC = clang++
 .PHONY all: compile run
 
 compile:
-	@${CC} ${SRCS} ${INCS} ${LIBRARIES} ${prms} ${libsprms} -o ${OUTDIR}
+	@${CC} ${SRCS} ${INCS} ${prms} ${libsprms} -o ${OUTDIR}
 
 run:
 	@${OUTDIR}

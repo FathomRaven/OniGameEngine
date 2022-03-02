@@ -31,6 +31,6 @@ Collider::ColliderType Collider::GetType()
 
 void Collider::Render()
 {
-    if(DEBUG_COLLIDERS)
+    if(Settings::Instance()->debugColliders)
         mDebugTexture->Render();
 }

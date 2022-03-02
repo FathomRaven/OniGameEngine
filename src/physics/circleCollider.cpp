@@ -7,7 +7,7 @@ CircleCollider::CircleCollider(float radius, bool broadPhase)
 {
     mRadius = radius;
 
-    if(DEBUG_COLLIDERS)
+    if(Settings::Instance()->debugColliders)
     {
         if(broadPhase)
             SetDebugTexture(new Texture("BroadPhaseCollider.png"));

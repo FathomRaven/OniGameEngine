@@ -138,6 +138,8 @@ GameManager::~GameManager()
     Cursor::Release();
     mCursor = nullptr;
 
+    Settings::Release();
+
     for (int i = 0; i < (int)mEntityRender.size(); i++)
     {
         delete mEntityRender[i];

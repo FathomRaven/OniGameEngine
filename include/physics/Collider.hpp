@@ -5,6 +5,7 @@ Base class for box and circle colliders
 */
 #pragma once
 #include "Texture.hpp"
+#include "Settings.hpp"
 
 namespace oni
 {
@@ -28,8 +29,6 @@ namespace oni
         virtual void Render();
     protected:
         ColliderType mType;
-        //Set to true to render colliders
-        static const bool DEBUG_COLLIDERS = true;
         Texture* mDebugTexture;
 
         void SetDebugTexture(Texture* texture);

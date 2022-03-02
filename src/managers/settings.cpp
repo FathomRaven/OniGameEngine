@@ -20,19 +20,12 @@ void Settings::Release()
 
 Settings::Settings()
 {
-    const toml::value config = toml::parse("src/config.toml");
-    
-    const toml::value& graphics = toml::find(config, "graphics");
+    winTitle = "Oni Project";
+    winWidth = 1024;
+    winHeight = 896;
+    winRefreshColor = {255, 255, 255, 255};
 
-    winTitle = toml::find<std::string>(graphics, "winTitle");
-    winWidth = toml::find<toml::integer>(graphics, "winWidth");
-    winHeight = toml::find<toml::integer>(graphics, "winHeight");
-    std::vector<int> winColor = toml::find<std::vector<int>>(graphics, "winColor");
-
-    winRefreshColor.r = winColor[0];
-    winRefreshColor.g = winColor[1];
-    winRefreshColor.b = winColor[2];
-    winRefreshColor.a = winColor[3];
+    debugColliders = false;
 }
 
 Settings::~Settings()
