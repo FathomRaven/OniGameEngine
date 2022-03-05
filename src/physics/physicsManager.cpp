@@ -18,15 +18,18 @@ void PhysicsManager::Release()
     instanceM = nullptr;
 }
 
-void PhysicsManager::SetLayerCollisionMask(CollisionLayers layer, CollisionFlags flags)
+void PhysicsManager::SetLayerCollisionMask(std::string layer, std::string flag)
 {
-    mLayerMasks[static_cast<unsigned int>(layer)] = std::bitset<static_cast<unsigned int>(CollisionLayers::MaxLayers)>(static_cast<unsigned int>(flags));
+    if(layer == flag)
+        printf("Error: Layer mask set to be collide with itself");
+    
+    mLayerMasks[colliderLayers[layer]][colliderLayers[flag]] = true;
+    mLayerMasks[colliderLayers[flag]][colliderLayers[layer]] = true;
 }
 
-unsigned long PhysicsManager::RegisterEntity(PhysEntity* entity, CollisionLayers layer)
+unsigned long PhysicsManager::RegisterEntity(PhysEntity* entity, std::string layer)
 {
-    mCollisionLayers[static_cast<unsigned int>(layer)].push_back(entity);
-
+    mCollisionLayers[colliderLayers[layer]].push_back(entity);
     mLastID++;
     return mLastID;
 }
@@ -34,7 +37,7 @@ unsigned long PhysicsManager::RegisterEntity(PhysEntity* entity, CollisionLayers
 void PhysicsManager::UnregisterEntity(unsigned long id)
 {
     bool found = false;
-    for (int i = 0; i < (int)static_cast<unsigned int>(CollisionLayers::MaxLayers) && !found; i++)
+    for (int i = 0; i < (int)colliderLayers.size() && !found; i++)
     {
         for (int j = 0; j < (int)mCollisionLayers[i].size() && !found; j++)
         {
@@ -50,7 +53,7 @@ void PhysicsManager::UnregisterEntity(unsigned long id)
 int PhysicsManager::GetEntityLayer(unsigned long id)
 {
     bool found = false;
-    for (int i = 0; i < (int)static_cast<unsigned int>(CollisionLayers::MaxLayers) && !found; i++)
+    for (int i = 0; i < (int)colliderLayers.size() && !found; i++)
     {
         for (int j = 0; j < (int)mCollisionLayers[i].size() && !found; j++)
         {
@@ -67,36 +70,56 @@ int PhysicsManager::GetEntityLayer(unsigned long id)
 
 PhysicsManager::PhysicsManager()
 {
+    colliderLayers = Settings::Instance()->collisionLayers;
+    
     mLastID = 0;
 
-    for (unsigned int i = 0; i < static_cast<unsigned int>(CollisionLayers::MaxLayers); i++)
+    for (size_t i = 0; i < colliderLayers.size(); i++)
     {
-        mLayerMasks[i] = std::bitset<static_cast<unsigned int>(CollisionLayers::MaxLayers)>(static_cast<unsigned int>(CollisionFlags::None));
+        mCollisionLayers.push_back({});
+    }
+    
+    for (int i = 0; i < (int)colliderLayers.size(); i++)
+    {
+        mLayerMasks.push_back({});
+        for (int j = 0; j < (int)colliderLayers.size(); j++)
+        {
+            mLayerMasks[i].push_back(false);
+        }
+        
     }
     
 }
 
 PhysicsManager::~PhysicsManager()
 {
-    for (unsigned int i = 0; i < static_cast<unsigned int>(CollisionLayers::MaxLayers); i++)
+    for (unsigned int i = 0; i < colliderLayers.size(); i++)
     {
         mCollisionLayers[i].clear();
+    }
+
+    for (unsigned int i = 0; i < colliderLayers.size(); i++)
+    {
+        mLayerMasks[i].clear();
     }
 }
 
 void PhysicsManager::Update()
 {
-    for (unsigned int i = 0; i < static_cast<unsigned int>(CollisionLayers::MaxLayers); i++)
+    for (unsigned int i = 0; i < colliderLayers.size(); i++)
     {
-        for (unsigned int j = 0; j < static_cast<unsigned int>(CollisionLayers::MaxLayers); j++)
+        for (unsigned int j = 0; j < colliderLayers.size(); j++)
         {
-            if(mLayerMasks[i].test(j) && i <= j)
+            // printf(mLayerMasks[i][j] == true && i <= j ? "true\n" : "");
+
+            if(mLayerMasks[i][j] == true && i <= j)
             {
                 for(unsigned int k = 0; k < mCollisionLayers[i].size(); k++)
                 {
                     for (unsigned int l = 0; l < mCollisionLayers[j].size(); l++)
                     {
                         mCollisionLayers[i][k]->CheckCollision(mCollisionLayers[j][l]);
+                        // printf(mCollisionLayers[i][k]->CheckCollision(mCollisionLayers[j][l]) ? "true" : "");
                     }
                 }
             }

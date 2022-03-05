@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <map>
 #include <SDL2/SDL_image.h>
 
 namespace oni
@@ -17,6 +18,9 @@ namespace oni
         SDL_Color winRefreshColor;
         
         bool debugColliders;
+
+        void AddLayer(std::string layerName);
+        std::map<std::string, int> collisionLayers;
     private:
         static Settings* instanceS;
         

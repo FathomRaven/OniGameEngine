@@ -17,7 +17,7 @@ Button::Button(std::string filename, bool _oneClick)
 
     AddCollider(new BoxCollider(mBackTexture->ScaledDimensions()));
 
-    mID = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::UI);
+    mID = PhysicsManager::Instance()->RegisterEntity(this, "UI");
 }
 
 Button::Button(std::string backTexFilename, std::string frontTexFilename, bool _oneClick)
@@ -38,7 +38,7 @@ Button::Button(std::string backTexFilename, std::string frontTexFilename, bool _
 
     AddCollider(new BoxCollider(mBackTexture->ScaledDimensions()));
 
-    mID = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::UI);
+    mID = PhysicsManager::Instance()->RegisterEntity(this, "UI");
 }
 
 Button::Button(std::string backTexFilename, std::string frontText, std::string frontTextFontpath, int frontTextSize, SDL_Color frontTextColor, bool _oneClick)
@@ -59,7 +59,7 @@ Button::Button(std::string backTexFilename, std::string frontText, std::string f
 
     AddCollider(new BoxCollider(mBackTexture->ScaledDimensions()));
 
-    mID = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::UI);
+    mID = PhysicsManager::Instance()->RegisterEntity(this, "UI");
 }
 
 Button::~Button()
@@ -89,10 +89,9 @@ bool Button::Hovered()
 
 void Button::Hit(PhysEntity* other, int collliderIndex)
 {
-    if(PhysicsManager::Instance()->GetEntityLayer(other->GetID()) != 3)
+    if(PhysicsManager::Instance()->GetEntityLayer(other->GetID()) != 1)
         return;
     isHovered = true;
-    mColliders[0];
 }
 
 void Button::Update()

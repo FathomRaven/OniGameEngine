@@ -24,7 +24,7 @@ Cursor::Cursor()
 
     AddCollider(new BoxCollider(Vector2(3.0f, 3.0f)), Pos());
 
-    mID = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Mouse);
+    mID = PhysicsManager::Instance()->RegisterEntity(this, "Mouse");
 }
 
 Cursor::~Cursor()

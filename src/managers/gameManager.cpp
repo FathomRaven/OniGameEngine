@@ -107,8 +107,6 @@ GameManager::GameManager()
     cameraMgr->SetActiveCamera(0);
 
     mCursor->Parent(cameraMgr->activeCamera);
-
-    physMgr->SetLayerCollisionMask(PhysicsManager::CollisionLayers::UI, PhysicsManager::CollisionFlags::Mouse);;
 }
 
 GameManager::~GameManager()

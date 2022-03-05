@@ -26,6 +26,14 @@ Settings::Settings()
     winRefreshColor = {255, 255, 255, 255};
 
     debugColliders = false;
+
+    collisionLayers.insert({"UI", 0});
+    collisionLayers.insert({"Mouse", 1});
+}
+
+void Settings::AddLayer(std::string layerName)
+{
+    collisionLayers.insert({layerName, collisionLayers.size()});
 }
 
 Settings::~Settings()

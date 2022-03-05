@@ -17,32 +17,15 @@ namespace oni
     class PhysicsManager
     {
     public:
-        //Layers
-        enum class CollisionLayers
-        {
-            Friendly = 0,
-            Stationary,
-            UI,
-            Mouse,
-            //-------------------------------------
-            MaxLayers
-        };
-        //Flags
-        enum class CollisionFlags
-        {
-            None = 0x00,
-            Friendly = 0x01,
-            Stationary = 0x02,
-            UI = 0x04,
-            Mouse = 0x08
-        };
+        std::map<std::string, int> colliderLayers;
+
         //Singleton Stuff
         static PhysicsManager* Instance();
         static void Release();
         //Set collision mask between a layer and a flag
-        void SetLayerCollisionMask(CollisionLayers layer, CollisionFlags flags);
+        void SetLayerCollisionMask(std::string layer, std::string flag);
         //Register Entity
-        unsigned long RegisterEntity(PhysEntity* entity, CollisionLayers layer);
+        unsigned long RegisterEntity(PhysEntity* entity, std::string layer);
         void UnregisterEntity(unsigned long id);
 
         int GetEntityLayer(unsigned long id);
@@ -50,8 +33,9 @@ namespace oni
         void Update();
     private:
         static PhysicsManager* instanceM;
-        std::vector<PhysEntity*> mCollisionLayers[static_cast<unsigned int>(CollisionLayers::MaxLayers)];
-        std::bitset<static_cast<unsigned int>(CollisionLayers::MaxLayers)> mLayerMasks[static_cast<unsigned int>(CollisionLayers::MaxLayers)];
+        std::vector<std::vector<PhysEntity*>> mCollisionLayers;
+        // std::bitset<static_cast<unsigned int>(CollisionLayers::MaxLayers)> mLayerMasks[static_cast<unsigned int>(CollisionLayers::MaxLayers)];
+        std::vector<std::vector<bool>> mLayerMasks;
 
         unsigned long mLastID;
 
@@ -59,13 +43,13 @@ namespace oni
         ~PhysicsManager();
     };
 
-    inline PhysicsManager::CollisionFlags operator|(PhysicsManager::CollisionFlags a, PhysicsManager::CollisionFlags b)
-    {
-        return static_cast<PhysicsManager::CollisionFlags>(static_cast<unsigned int>(a) | static_cast<unsigned int>(b));
-    }
+    // inline PhysicsManager::CollisionFlags operator|(PhysicsManager::CollisionFlags a, PhysicsManager::CollisionFlags b)
+    // {
+    //     return static_cast<PhysicsManager::CollisionFlags>(static_cast<unsigned int>(a) | static_cast<unsigned int>(b));
+    // }
 
-    inline PhysicsManager::CollisionFlags operator &(PhysicsManager::CollisionFlags a, PhysicsManager::CollisionFlags b)
-    {
-        return static_cast<PhysicsManager::CollisionFlags>(static_cast<unsigned int>(a) & static_cast<unsigned int>(b));
-    }
+    // inline PhysicsManager::CollisionFlags operator &(PhysicsManager::CollisionFlags a, PhysicsManager::CollisionFlags b)
+    // {
+    //     return static_cast<PhysicsManager::CollisionFlags>(static_cast<unsigned int>(a) & static_cast<unsigned int>(b));
+    // }
 }
