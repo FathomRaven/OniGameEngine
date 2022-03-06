@@ -81,7 +81,8 @@ void Texture::Render()
     // If theres no camera, ignore this part.
     if(cameraMgr->activeCamera != nullptr)
     {
-        pos = Pos(world) - cameraMgr->activeCamera->Pos(world);
+        pos.x = Pos(world).x - cameraMgr->activeCamera->Pos(world).x + cameraMgr->activeCamera->cameraSize.x/2;
+        pos.y = Pos(world).y - cameraMgr->activeCamera->Pos(world).y + cameraMgr->activeCamera->cameraSize.y/2;
     }
 
     // Checks if the texture is visible to the camera

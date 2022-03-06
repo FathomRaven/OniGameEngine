@@ -103,7 +103,7 @@ GameManager::GameManager()
     mTimer = Timer::Instance();
     mCursor = Cursor::Instance();
     
-    cameraMgr->AddCamera();
+    cameraMgr->AddCamera(Vector2(mGraphics->SCREEN_WIDTH/2, mGraphics->SCREEN_HEIGHT/2));
     cameraMgr->SetActiveCamera(0);
 
     mCursor->Parent(cameraMgr->activeCamera);
