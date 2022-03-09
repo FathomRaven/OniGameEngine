@@ -171,7 +171,7 @@ void GameManager::Update()
 
 void GameManager::Render()
 {
-    // mGraphics->ClearBackBuffer();
+    mGraphics->ClearBackBuffer();
 
     //Render things in here
 
