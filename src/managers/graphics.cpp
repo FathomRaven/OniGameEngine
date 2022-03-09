@@ -168,6 +168,14 @@ void Graphics::DrawTexture(SDL_Texture* tex, SDL_Rect* clip, SDL_Rect* rend, flo
     SDL_RenderCopyEx(mRenderer, tex, clip, rend, angle, nullptr, flip);
 }
 
+void Graphics::DrawPoint(int x, int y, SDL_Color color)
+{
+    SDL_SetRenderDrawColor(mRenderer, color.r, color.g, color.b, color.a);
+    SDL_RenderDrawPoint(mRenderer, x, y);
+    SDL_SetRenderDrawColor(mRenderer, REFRESHCOLOR.r, REFRESHCOLOR.g, REFRESHCOLOR.b, REFRESHCOLOR.a);
+    // printf("X: %i, Y: %i\n", x, y);
+}
+
 //Render to the screen
 
 void Graphics::Render()

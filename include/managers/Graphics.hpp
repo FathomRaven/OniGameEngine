@@ -33,6 +33,7 @@ namespace oni
         void ClearBackBuffer();
         //Draw a texture to the screen with the renderer
         void DrawTexture(SDL_Texture* tex, SDL_Rect* clip = nullptr, SDL_Rect* rend = nullptr, float angle = 0.0f, SDL_RendererFlip flip = SDL_FLIP_NONE);
+        void DrawPoint(int x, int y, SDL_Color color);
         //Present screen
         void Render();
         SDL_Renderer* mRenderer;
