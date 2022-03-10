@@ -99,7 +99,11 @@ namespace oni
         return Vector2(lhs.x / rhs.x, lhs.y / rhs.y);
     }
 
-    //Rotate a vector
+    /**
+    * @brief Return a vector rotated by an angle
+    * @param vec Vector to rotate
+    * @param angle Amount to rotate the vector by
+    */
     inline Vector2 RotateVector(Vector2 vec, float angle)
     {
         float radAngle = (float)(angle*DEG_TO_RAD);
@@ -107,11 +111,22 @@ namespace oni
         return Vector2((float)(vec.x * cos(radAngle) - vec.y * sin(radAngle)), (float)(vec.x * sin(radAngle) + vec.y * cos(radAngle)));
     }
 
+    /**
+    * @brief Return the dot product between two vectors
+    * @param vec1 First vector 
+    * @param vec2 Second vector
+    */
     inline float Dot(const Vector2& vec1, const Vector2& vec2)
     {
         return vec1.x * vec2.x + vec1.y * vec2.y;
     }
 
+    /**
+     * @brief Return a float clamped between the given min and max 
+     * @param value Value being clamped
+     * @param min Minimum value to clamp to
+     * @param max Maximum value to clamp to
+     */    
     inline float Clamp(const float& value, const float& min, const float& max)
     {
         if(value > max)
@@ -120,10 +135,27 @@ namespace oni
             return min;
         return value;
     }
-    //Get a distance vector between two vectors
-    inline Vector2 Distance(Vector2 a, Vector2 b)
+
+    /**
+     * @brief Return the distance between two vectors
+     * @param vec1 First vector
+     * @param vec2 Second vector
+     * @return Distance between two vectors
+    */
+    inline Vector2 Distance(Vector2 vec1, Vector2 vec2)
     {
-        return Vector2(a.x - b.x, a.y - b.y);
+        return Vector2(vec1.x - vec2.x, vec1.y - vec2.y);
+    }
+
+    /**
+     * @brief Get the linear interpolation between two values
+     * @param start Initial value
+     * @param end Desired value
+     * @param interpolation Amount to interpolate by 
+    */
+    inline float Lerp(float start, float end, float interpolation)
+    {
+        return start + (start - end) * interpolation;
     }
 
     const Vector2 VEC2_ZERO = {0.0f, 0.0f};
@@ -133,4 +165,3 @@ namespace oni
     const Vector2 VEC2_RIGHT = {1.0f, 0.0f};
     const Vector2 VEC2_LEFT = {-1.0f, 0.0f};
 }
-
