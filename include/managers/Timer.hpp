@@ -8,16 +8,28 @@ namespace oni
 {
     class Timer {
     public:
-        //Singleton instance methods
+        //@brief Return the Timer instance
         static Timer* Instance();
+        
+        //@brief Release the Timer instance
         static void Release();
-        //DeltaTime getter, and reset method
+
+        //@brief Reset the deltaTime
         void Reset();
+
+        //@brief Return the deltaTime
         float DeltaTime();
-        //Sets and gets the timeScale
+        
+        /**
+         * @brief set the TimeScale
+         * @param t Value to set the timescale to 
+        */
         void TimeScale(float t);
+
+        //@brief Return the current TimeScale
         float TimeScale();
-        //Update method
+        
+        //Update the timer
         void Update();
 
     private:

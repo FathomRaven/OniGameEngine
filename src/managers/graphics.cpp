@@ -2,8 +2,6 @@
 
 using namespace oni;
 
-//Basic singleton instance
-
 Graphics* Graphics::sInstance = nullptr;
 bool Graphics::sInitalized = false;
 
@@ -27,8 +25,6 @@ bool Graphics::Initialized()
 {
     return sInitalized;
 }
-
-//Constructor and destructor
 
 Graphics::Graphics()
 {
@@ -55,8 +51,6 @@ Graphics::~Graphics()
     IMG_Quit();
     SDL_Quit();
 }
-
-//Prepare and create the main systems
 
 bool Graphics::Init()
 {
@@ -108,8 +102,6 @@ bool Graphics::Init()
     return true;
 }
 
-//Function for loading textures, takes in a path to the file it's loading
-
 SDL_Texture* Graphics::LoadTexture(std::string path)
 {
     //Create the tex variable
@@ -154,14 +146,10 @@ SDL_Texture* Graphics::CreateTextTexture(TTF_Font* font, std::string text, SDL_C
     return tex;
 }
 
-//Clears the renderer
-
 void Graphics::ClearBackBuffer()
 {
     SDL_RenderClear(mRenderer);
 }
-
-//Draws a texture with two main rects, clip = src, rend = dst
 
 void Graphics::DrawTexture(SDL_Texture* tex, SDL_Rect* clip, SDL_Rect* rend, float angle, SDL_RendererFlip flip)
 {
@@ -175,8 +163,6 @@ void Graphics::DrawPoint(int x, int y, SDL_Color color)
     SDL_SetRenderDrawColor(mRenderer, REFRESHCOLOR.r, REFRESHCOLOR.g, REFRESHCOLOR.b, REFRESHCOLOR.a);
     // printf("X: %i, Y: %i\n", x, y);
 }
-
-//Render to the screen
 
 void Graphics::Render()
 {

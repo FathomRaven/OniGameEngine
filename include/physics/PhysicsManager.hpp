@@ -17,17 +17,37 @@ namespace oni
     class PhysicsManager
     {
     public:
+        //The collision layers
         std::map<std::string, int> colliderLayers;
 
-        //Singleton Stuff
+        //@brief Return the PhysicsManager instance
         static PhysicsManager* Instance();
+        
+        //@brief Release the PhysicsManager instance
         static void Release();
-        //Set collision mask between a layer and a flag
+
+        /**
+         * @brief Designate two collision layers to collide with each other
+         * @param layer First collision layer in the mask
+         * @param flag Second collision layer in the mask 
+        */
         void SetLayerCollisionMask(std::string layer, std::string flag);
-        //Register Entity
+
+        /**
+         * @brief Register a PhysicsEntity in a collider layer
+         * @param entity PhysicsEntity to be registered 
+         * @param layer Name of the layer for the entity to be registered in
+         * @return The ID of the newly registed entity 
+        */
         unsigned long RegisterEntity(PhysEntity* entity, std::string layer);
+        
+        /**
+         * @brief Unregister a PhysicsEntity from its layer
+         * @param id The ID of the PhysicsEntity
+        */
         void UnregisterEntity(unsigned long id);
 
+        //TODO: Replace this function. Ideally, should switch over to using a struct for layers
         int GetEntityLayer(unsigned long id);
 
         void Update();

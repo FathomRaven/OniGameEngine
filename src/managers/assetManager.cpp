@@ -1,8 +1,6 @@
 #include "AssetManager.hpp"
 using namespace oni;
 
-//Basic singleton stuff
-
 AssetManager* AssetManager::sInstance = nullptr;
 
 AssetManager* AssetManager::Instance()
@@ -19,7 +17,6 @@ void AssetManager::Release()
     sInstance = nullptr;
 }
 
-//Construct, empty
 
 AssetManager::AssetManager()
 {
@@ -35,7 +32,7 @@ AssetManager::AssetManager()
     delete fullPathPointer;
     fullPathPointer = nullptr;
 }
-//Clears the texture map, makes sure to destroy all textures
+
 AssetManager::~AssetManager()
 {
     //For every texture in the map, check if the second texture is cleared. If not, destroy it
@@ -89,7 +86,7 @@ AssetManager::~AssetManager()
 
     mMusic.clear();
 }
-//Get texture info
+
 SDL_Texture* AssetManager::GetTexture(std::string filename)
 {
 

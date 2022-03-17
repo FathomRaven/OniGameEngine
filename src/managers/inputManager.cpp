@@ -2,7 +2,6 @@
 
 using namespace oni;
 
-//Singleton instance
 InputManager* InputManager::sInstance = nullptr;
 
 InputManager* InputManager::Instance()
@@ -18,7 +17,7 @@ void InputManager::Release()
     delete sInstance;
     sInstance = nullptr;
 }
-//Constructor and destructor
+
 InputManager::InputManager()
 {
     mKeyboardState = SDL_GetKeyboardState(&mKeyLength);
@@ -31,7 +30,7 @@ InputManager::~InputManager()
     delete[] mPrevKeyboardState;
     mPrevKeyboardState = nullptr;
 }
-//Returns if key is down
+
 bool InputManager::KeyDown(SDL_Scancode scanCode)
 {
     return mKeyboardState[scanCode];
@@ -142,7 +141,6 @@ bool InputManager::MouseButtonReleased(MOUSE_BUTTON button)
     return (mPrevMouseState & mask) && !(mMouseState & mask);
 }
 
-//Updates
 void InputManager::Update()
 {
     mMouseState = SDL_GetMouseState(&mMouseXPos, &mMouseYPos);

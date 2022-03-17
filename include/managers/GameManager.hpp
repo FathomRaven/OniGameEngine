@@ -11,16 +11,26 @@ namespace oni
 {
     class GameManager{
     public:    
-        //Instance stuff
         
+        //@brief Return the GameManager instance
         static GameManager* Instance();
+        //@brief Release the GameManager instance
         static void Release();
         //Run loop
         bool Run();
 
         bool FrameLimit();
         
+        /**
+         * @brief Add an entity to be rendered every frame
+         * @param entity Entity to be added 
+        */
         void AddToRenders(GameEntity* entity);
+
+        /**
+         * @brief Add an entity to be updated every frame
+         * @param entity Entity to be added 
+        */
         void AddToUpdates(GameEntity* entity);
 
         void EarlyUpdate();

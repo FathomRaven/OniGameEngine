@@ -13,17 +13,43 @@ namespace oni
 class AssetManager {
 
 public:
-    //Instance stuff
+    //Access the assetManager instance 
     static AssetManager* Instance();
+    //Release the assetManager
     static void Release();
-    //Get texture from texture manager @param filename the filename of the image 
+
+    /**
+     * @brief Returns a texture from the assetManager
+     * @param filename Name of the texture to return 
+    */
     SDL_Texture* GetTexture(std::string filename);
-    //Get font texture from font map. Creates the font if it doesn't exist
-    //@param filename name of the ttf file @param size the size of the font @param color the color of the font
+
+    /**
+     * @brief Return a TTF_Font from the assetManager
+     * @param filename Name of the font to return
+     * @param size Size of the font to return 
+    */
     TTF_Font* GetFont(std::string filename, int size);
+
+    /**
+     * @brief Return a texture of some text
+     * @param text Text in the texture
+     * @param filename Name of the font for the text
+     * @param size Size of the font
+     * @param color Color of the text  
+    */
     SDL_Texture* GetText(std::string text, std::string filename, int size, SDL_Color color);
 
+    /**
+     * @brief Return a music variable
+     * @param filename Name of the music file 
+    */
     Mix_Music* GetMusic(std::string filename);
+
+    /**
+     * @brief Return a sound effect variable
+     * @param filename Name of the sound effect file 
+    */
     Mix_Chunk* GetSFX(std::string filename);
 
 

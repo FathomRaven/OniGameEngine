@@ -14,9 +14,11 @@ namespace oni
     public:
         BoxCollider(Vector2 size);
         ~BoxCollider();
-
+        
+        //@brief Get the furthest point of the box collider
         Vector2 GetFurthestPoint() override;
 
+        //@brief Vertex getter
         Vector2 GetVertexPos(int index);
 
     private:

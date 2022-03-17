@@ -5,7 +5,6 @@ Game entity class, from which all textures are from
 
 using namespace oni;
 
-//Constructor and destructor
 GameEntity::GameEntity(float x, float y)
 {
     mPos.x = x;
@@ -24,12 +23,12 @@ GameEntity::~GameEntity()
 {
     mParent = nullptr;
 }
-//Set position of entity, uses vector2
+
 void GameEntity::Pos(Vector2 pos)
 {
     mPos = pos;
 }
-//Get position of entity, either local or world space
+
 Vector2 GameEntity::Pos(SPACE space)
 {
     if (space == local || mParent == nullptr)
@@ -49,7 +48,7 @@ Vector2 GameEntity::Pos(SPACE space)
     
     return finalPos;
 }
-//Set rotation of entity
+
 void GameEntity::Rotation(float r)
 {
     mRotation = r;
@@ -60,7 +59,7 @@ void GameEntity::Rotation(float r)
     if(mRotation < 0.0f)
         mRotation += 360.0f;
 }
-//Get rotation of entity
+
 float GameEntity::Rotation(SPACE space)
 {
     if(space == local || mParent == nullptr)
@@ -86,7 +85,7 @@ Vector2 GameEntity::Scale(SPACE space)
     return scale;
 }
 
-//Activation
+
 void GameEntity::Active(bool active)
 {
     mActive = active;
@@ -97,7 +96,6 @@ bool GameEntity::Active()
     return mActive;
 }
 
-//Parent setting and getting
 void GameEntity::Parent(GameEntity* parent) 
 {
     if(parent == nullptr)
@@ -130,7 +128,7 @@ GameEntity* GameEntity::Parent()
 {
     return mParent;
 }
-//Move the entity by a vector2
+
 void GameEntity::Translate(Vector2 vec)
 {
     mPos += vec;
@@ -141,13 +139,10 @@ void GameEntity::Rotate(float amount)
     mRotation += amount;
 }
 
-//Update the entity
 void GameEntity::Update()
 {
-
 }
-//Render the entity
+
 void GameEntity::Render()
 {
-    
 }

@@ -68,7 +68,6 @@ namespace oni
                 return true;
         }
         
-        
         if(PointToLineDistance(box->GetVertexPos(0), box->GetVertexPos(1), circlePos) < radius ||
         PointToLineDistance(box->GetVertexPos(0), box->GetVertexPos(2), circlePos) < radius ||
         PointToLineDistance(box->GetVertexPos(2), box->GetVertexPos(3), circlePos) < radius ||
@@ -76,7 +75,6 @@ namespace oni
         {
             return true;
         }
-
 
         if(PointInPolygon(quad, 4, circlePos))
             return true;

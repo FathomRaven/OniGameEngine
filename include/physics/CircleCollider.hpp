@@ -13,6 +13,7 @@ namespace oni
         CircleCollider(float radius, bool broadPhase = false);
         ~CircleCollider();
 
+        //@brief Get the furthest point of the circle 
         Vector2 GetFurthestPoint() override;
 
         float GetRadius();

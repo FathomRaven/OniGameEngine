@@ -140,7 +140,6 @@ namespace oni
      * @brief Return the distance between two vectors
      * @param vec1 First vector
      * @param vec2 Second vector
-     * @return Distance between two vectors
     */
     inline Vector2 Distance(Vector2 vec1, Vector2 vec2)
     {
@@ -148,7 +147,7 @@ namespace oni
     }
 
     /**
-     * @brief Get the linear interpolation between two values
+     * @brief Return the linear interpolation between two values
      * @param start Initial value
      * @param end Desired value
      * @param interpolation Amount to interpolate by 
@@ -156,6 +155,17 @@ namespace oni
     inline float Lerp(float start, float end, float interpolation)
     {
         return start + (start - end) * interpolation;
+    }
+
+    /**
+     * @brief Return the linear interpolation between two Vector2s
+     * @param vec1 First vector2
+     * @param vec2 Second Vector2
+     * @param interpolation Amount to interpolate by 
+    */
+    inline Vector2 VectorLerp(Vector2 vec1, Vector2 vec2, float interpolation)
+    {
+        return Vector2(Lerp(vec1.x, vec2.x, interpolation), Lerp(vec1.x, vec2.x, interpolation));
     }
 
     const Vector2 VEC2_ZERO = {0.0f, 0.0f};

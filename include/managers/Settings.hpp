@@ -9,7 +9,10 @@ namespace oni
     class Settings
     {    
     public:
+        //@brief Return the Settings instance
         static Settings* Instance();
+        
+        //@brief Release the Settings instance
         static void Release();
 
         //Graphics Variables

@@ -17,19 +17,27 @@ namespace oni
         enum WRAP_MODE {once = 0, loop = 1}; //If the animation goes once or loops
         enum ANIM_DIR {horizontal = 0, vertical = 1}; //Direction of sprite sheet
 
-        //Constructor and destructor
-        //AnimatedTexture Constructor 
-        //@param filename The name of the spritesheet to load
-        //@param frameCount The amount of frames in the spritesheet
-        //@param animationSpeed The speed of the animation 
-        //@param direction of the sprite sheet 
+        /**
+         * @brief A texture that animates through a sprite sheet
+         * @param filename Name of the sprite sheet file
+         * @param x Starting X position
+         * @param y Starting Y position
+         * @param w Width of a single frame
+         * @param h Height of a single frame
+         * @param framecount Number of frames in the animation
+         * @param animationSpeed Duration of the animation
+         * @param animationDir Direction of the sprite sheet
+        */
         AnimatedTexture(std::string filename, int x, int y, int w, int h, int frameCount, float animationSpeed, ANIM_DIR animationDir);
-        ~AnimatedTexture();
-        //Wrapping mode setter
-        void WrapMode(WRAP_MODE mode);
-        //Update
-        void Update();
 
+        ~AnimatedTexture();
+
+        /**
+         * @brief Change the textures wrapmode
+        */
+        void WrapMode(WRAP_MODE mode);
+
+        void Update();
     private:
         //Timer instance
         Timer* mTimer;

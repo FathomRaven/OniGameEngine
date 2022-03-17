@@ -2,7 +2,6 @@
 
 using namespace oni;
 
-//Basic singleton
 Timer* Timer::sInstance = nullptr;
 
 Timer* Timer::Instance()
@@ -17,7 +16,7 @@ void Timer::Release()
     delete sInstance;
     sInstance = nullptr;
 }
-//Constructor and destructor
+
 Timer::Timer()
 {
     Reset();
@@ -30,23 +29,23 @@ Timer::~Timer()
 {
     
 }
-//Reset the  timer
+
 void Timer::Reset()
 {
     mStartTicks = SDL_GetTicks();
 
 }
-//DeltaTime getter
+
 float Timer::DeltaTime()
 {
     return mDeltaTime;
 }
-//TimeScale setter
+
 void Timer::TimeScale(float t)
 {
     mTimeScale = t;
 }
-//TimeScale getter
+
 float Timer::TimeScale()
 {
     return mTimeScale;

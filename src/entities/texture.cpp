@@ -17,7 +17,7 @@ Texture::Texture(std::string filename)
     mRenderRect.w = mWidth;
     mRenderRect.h = mHeight;
 }
-//Secondary Construct
+
 Texture::Texture(std::string filename, int x, int y, int w, int h)
 {   
     //Get graphics instance
@@ -54,7 +54,6 @@ Texture::Texture(std::string text, std::string fontpath, int size, SDL_Color col
     mRenderRect.h = mHeight;
 }
 
-//Destruct
 Texture::~Texture()
 {
     mTex = nullptr;
@@ -70,7 +69,6 @@ Vector2 Texture::ScaledDimensions()
     return ScaledDimensions;
 }
 
-//Render to screen
 void Texture::Render()
 {
     

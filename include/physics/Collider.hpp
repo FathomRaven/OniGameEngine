@@ -21,8 +21,10 @@ namespace oni
         
         Collider(ColliderType type);
         virtual ~Collider();
+        
         //Get the furthest point
         virtual Vector2 GetFurthestPoint() = 0;
+        
         //Get the type of collider
         ColliderType GetType();
 

@@ -44,11 +44,7 @@ Terminology:
 This all works best with VSCode bettercomments extension
 */
 
-//Docs
-
-//! Occasional odd collision
-    //? More info needed
-//Rework collision to use maps instead of enums
+//Memory class
 //Animator State
 //Random class
 //Improve comments
@@ -58,8 +54,13 @@ This all works best with VSCode bettercomments extension
     Spell checking
     */
 //Collision assets in engine code itself, not in individual projects
+//Camera reworking
+    /*
+    Allow for zooming and rotation
+    Change cameramanager to use a map of cameras and names
+    Make some build in options for camera following
+    */
 //// Particle engine
-//// Camera zooming
 
 #include "GameManager.hpp"
 using namespace oni;
@@ -82,7 +83,6 @@ void GameManager::Release()
     sInstance = nullptr;
 }
 
-//Constructor and destructor
 
 GameManager::GameManager()
 {
@@ -159,8 +159,6 @@ void GameManager::EarlyUpdate()
 
 void GameManager::Update()
 {
-    //Update objects in here
-
     mCursor->Update();
 
     for (int i = 0; i < (int)mEntityUpdate.size(); i++)
@@ -172,8 +170,6 @@ void GameManager::Update()
 void GameManager::Render()
 {
     mGraphics->ClearBackBuffer();
-
-    //Render things in here
 
     for (int i = 0; i < (int)mEntityRender.size(); i++)
     {

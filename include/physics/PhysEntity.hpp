@@ -18,15 +18,27 @@ namespace oni
         virtual ~PhysEntity();
 
         virtual void Render();
-        //Check if colliding with another physics entity
+
+        /**
+         * @brief Return if two PhysicsEntity are colliding
+         * @param other The other PhysEntity 
+        */
         bool CheckCollision(PhysEntity* other);
 
+        /**
+         * @brief A function called whenever a PhysicsEntity collides with another PhysicsEntity
+         * @param other The PhysicsEntity responsible for the collision
+         * @param colliderIndex The collider that was hit
+        */
         virtual void Hit(PhysEntity* other, int collliderIndex = 0);
-        //Clear collider hits
 
+        //@brief Returns the ID of the PhysicsEntity
         unsigned long GetID();
+
+        //@brief PhysicsEntity ID setter
         void SetID(unsigned long ID);
-        //Check through all colliders
+
+        //Set to true to find out which collider was collided with in the Hit() function
         bool fullCheck = false;
     protected:
         //ID of entity
